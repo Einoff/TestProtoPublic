@@ -1,0 +1,36 @@
+.all-users-item { 
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.308);
+    padding: 0 20px;
+    text-align: center;
+    cursor: pointer;
+    
+}
+.all-users-item:hover{
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 10, 0.5);
+    border: none;
+}
+.all-users-item__photo-wrapp{
+    width: 24%;
+}
+.all-users-item__photo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 50%;
+    border: 1px solid #fff;
+ }
+.all-users-item__name {
+    width: 24%;
+ }
+.all-users-item__email { 
+    width: 24%;
+}
+.all-users-item__tel {
+    width: 24%;
+ }

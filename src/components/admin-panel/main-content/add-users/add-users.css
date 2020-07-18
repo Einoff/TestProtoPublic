@@ -1,0 +1,14 @@
+.add-users { }
+.add-users__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+.add-users__last-name { }
+.add-users__first-name { }
+.add-users__add-users__middle-name { }
+.add-users__add-users__email { }
+.add-users__add-users__tel { }
+.add-users__add-users__password { }
+.add-users__photo { }
+.add-users__btn { }

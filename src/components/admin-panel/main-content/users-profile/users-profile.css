@@ -1,0 +1,62 @@
+.users-profile {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0, 0.7);
+    z-index: 50;
+ }
+.users-profile__inner { 
+    width: 90%;
+    height: 90%;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+.users-profile__personal {
+    background: rgb(252, 250, 250);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px;
+ }
+.users-profile__p-photo {
+    background-color: rgb(253, 200, 200);
+    width: 100px;
+    height: 100px;
+
+ }
+.users-profile__p-info { 
+    background-color: rgb(234, 248, 182);
+    
+}
+.users-profile__contacts { 
+    background-color: rgb(166, 200, 240);
+}
+.users-profile__orders { 
+    background-color: rgb(235, 197, 243);
+    overflow: auto;
+    height: 100%;
+
+}
+
+.users-profile__order-item{
+    background-color: rgb(245, 243, 243);
+    border-bottom: 1px solid #555;
+    height: 100px;
+}
+
+.users-profile__close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    cursor: pointer;
+}

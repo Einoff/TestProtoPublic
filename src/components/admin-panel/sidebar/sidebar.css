@@ -1,0 +1,19 @@
+.sidebar { 
+    width: 280px;
+    height: 100%;
+    background-color: #fff;
+}
+.sidebar__items { 
+    padding: 0 20px;
+    list-style: none;
+}
+.sidebar__item { 
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #222;
+    text-decoration: none;
+}
+.admin-panel__logo{
+    height: 80px;
+}

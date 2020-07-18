@@ -1,0 +1,23 @@
+.admin-panel {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(250, 231, 231);
+    position: relative;
+ }
+.admin-panel__inner{
+    display: flex;
+    height: 100%;
+}
+.ap__top {
+    background-color: rgb(162, 164, 252);
+    width: 100%;
+ }
+.ap__content { 
+    width: 100%;
+}
+.ap__left-nav { 
+    background-color: rgb(47, 126, 115);
+}
+.ap__main-content { 
+    background-color: rgb(166, 88, 185);
+}

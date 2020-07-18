@@ -1,0 +1,22 @@
+.top-panel { 
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    min-height: 70px;
+    align-items: center;
+    padding: 15px 40px;
+}
+.top-panel__profile { 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+.top-panel__profile-name { }
+.top-panel__profile-status { }
+.top-panel__profile-nav {
+    visibility: hidden;
+    position: absolute;
+ }
+.top-panel__profile-nav-link { }
