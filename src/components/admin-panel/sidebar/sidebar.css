@@ -1,16 +1,46 @@
 .sidebar { 
-    width: 280px;
+    width: 260px;
     height: 100%;
-    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 6px 0 20px 0 rgba(25,42,70,.35);
+    background-image: url(../../../assets/image/templ-img/templ/s1200.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
 }
+.sidebar__inner{
+    width: 280px;
+    overflow: auto;
+    height: 100%;
+    background-image: linear-gradient(135deg,#2f3ea0e8,#ae332de1);
+}
+.sidebar a{
+    /* font-family: 'Rubik', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #fff;
+    white-space: nowrap;
+
+}
+
+/* .sidebar::-webkit-scrollbar {width: 25px;} */
 .sidebar__items { 
-    padding: 0 20px;
+    
     list-style: none;
+}
+.sidebar__items li{
+    background-color: rgba(255, 255, 255, 0);
+    transition: 0.3s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+}
+.sidebar__items li:hover{
+    background-color: rgba(255, 255, 255, 0.20);
 }
 .sidebar__item { 
     display: inline-block;
-    padding: 10px 15px;
-    font-size: 14px;
+    padding: 18px 30px ;
     color: #222;
     text-decoration: none;
 }

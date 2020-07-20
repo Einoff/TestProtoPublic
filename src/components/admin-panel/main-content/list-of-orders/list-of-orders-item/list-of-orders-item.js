@@ -1,6 +1,6 @@
 const { default: Component } = require("../../../../../core/Component");
 import './list-of-orders-item.css'
-import Order from '../../users-profile/orders/orders';
+import Order from '../../orders/orders';
 import Gallery from '../../gallery/gallery';
 
 class ListOfOrderItem extends Component {

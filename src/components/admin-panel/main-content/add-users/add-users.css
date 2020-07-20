@@ -1,14 +1,81 @@
-.add-users { }
+.add-users {
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 100px;
+ }
+.add-users__title{
+    margin: 15px 15px 30px;
+    font-size: 15px;
+   
+}
 .add-users__form {
+    overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 15px 30px;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.15);
  }
-.add-users__last-name { }
-.add-users__first-name { }
-.add-users__add-users__middle-name { }
-.add-users__add-users__email { }
-.add-users__add-users__tel { }
-.add-users__add-users__password { }
-.add-users__photo { }
-.add-users__btn { }
+ .add-users__input {
+    outline: none;
+    border: 1px solid #dbdee5ea;
+    margin: 10px 0;
+    padding: 15px 15px;
+    border-radius: 5px;
+    width: 100%;
+  }
+  .add-users__input::placeholder{
+
+  }
+ .add-users__file {
+     cursor: pointer;
+  }
+ .add-users__t-area {
+    outline: none;
+    border: 1px solid #dbdee5ea;
+    margin: 10px 0;
+    padding: 15px 15px;
+    border-radius: 5px;
+    width: 100%;
+    min-height: 200px;
+    
+  }
+  .t-area__label{
+      width: 100%;
+      margin: 20px 0;
+  }
+  .t-area__title{
+      padding-left: 15px;
+  }
+  .add-users__file-label{
+      display: flex;
+      /* justify-content: space-between; */
+      width: 100%;
+      padding-left: 15px;
+      margin-bottom: 30px;
+  }
+ .add-users__btn { 
+     border-radius: 5px;
+     background-color: #7366ff;
+     border: none;
+     padding: 10px 50px;
+     outline: none;
+     color: #fff;
+     cursor: pointer;
+     margin-bottom: 20px;
+ }
+ .add-users__btn:hover{
+    
+    background-color: #4433ff;
+ }
+
+ .t-area__file{
+     margin-right: 20px;
+     margin-bottom: 25px;
+ }
+

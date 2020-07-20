@@ -7,8 +7,9 @@ import AllUsers from '../components/admin-panel/main-content/all-users/all-users
 import AllUsersItem from '../components/admin-panel/main-content/all-users/all-users-item/all-users-item';
 import ListOfOrder from '../components/admin-panel/main-content/list-of-orders/list-of-orders';
 import ListOfOrderItem from '../components/admin-panel/main-content/list-of-orders/list-of-orders-item/list-of-orders-item';
-import Order from '../components/admin-panel/main-content/users-profile/orders/orders';
+import Order from '../components/admin-panel/main-content/orders/orders';
 import Gallery from '../components/admin-panel/main-content/gallery/gallery';
+import AddOrders from '../components/admin-panel/main-content/add-orders/add-orders';
 
 
 
@@ -23,6 +24,7 @@ export const routEvent = () => {
             break;
         case 'admin':
             adminPanelCr(root);
+            addOrders();
             break;
         case 'addusers':
             addUserCr();
@@ -30,8 +32,11 @@ export const routEvent = () => {
         case 'allusers':
             allUsers();
             break;
-        case 'orders-list':
+        case 'allorders':
             ordersList();
+            break;
+        case 'addorders':
+            addOrders();
             break;
     }
 }
@@ -78,6 +83,14 @@ const ordersList = () => {
     const ordersList = new ListOfOrder('main-content');
     const ordersListItem = new ListOfOrderItem('l-order');
     
+}
+
+//add orders
+
+const addOrders = () => {
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = '';
+    const addOrders = new AddOrders('main-content');
 }
 
 

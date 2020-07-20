@@ -1,15 +1,17 @@
 .admin-panel {
     width: 100%;
     height: 100vh;
-    background-color: rgb(250, 231, 231);
+    /* background-color: rgb(250, 231, 231); */
     position: relative;
+    background-color: #f7f7f8;
+    overflow: hidden;
  }
 .admin-panel__inner{
     display: flex;
     height: 100%;
 }
 .ap__top {
-    background-color: rgb(162, 164, 252);
+    /* background-color: #f7f7f8; */
     width: 100%;
  }
 .ap__content { 
@@ -19,5 +21,7 @@
     background-color: rgb(47, 126, 115);
 }
 .ap__main-content { 
-    background-color: rgb(166, 88, 185);
+    height: 100%;
+    width: 100%;
+    
 }
