@@ -14,10 +14,9 @@ const html = addUser();
 
 const addUsersFormHandler = () => {
     const addUserForm = document.getElementById('add-u-form');
-
     addUserForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const url = 'http://localhost:8080/api/backend/addusers.php';
+        const url = './service/addusers.php';
         const formData = new FormData(addUserForm);
         fetch(url, {method: 'POST', body: formData})
     });

@@ -10,6 +10,7 @@ import ListOfOrderItem from '../components/admin-panel/main-content/list-of-orde
 import Order from '../components/admin-panel/main-content/orders/orders';
 import Gallery from '../components/admin-panel/main-content/gallery/gallery';
 import AddOrders from '../components/admin-panel/main-content/add-orders/add-orders';
+import Store from '../store/store';
 
 
 
@@ -17,14 +18,12 @@ import AddOrders from '../components/admin-panel/main-content/add-orders/add-ord
 export const routEvent = () => {
     let routUrlValue = window.location.hash.slice(1);
     const root = document.getElementById('root');
-    switch(routUrlValue){
+    switch (routUrlValue) {
         case 'authorization':
-            authorizationCr(root);
-            
+            authorizationCr();
             break;
         case 'admin':
-            adminPanelCr(root);
-            addOrders();
+            adminPanelCr();
             break;
         case 'addusers':
             addUserCr();
@@ -44,21 +43,24 @@ export const routEvent = () => {
 // ссылки на DOM элементы
 const DOMlinks = {
     mainContent: document.getElementById('main-content')
-}  
+}
 
 
 //страница авторизации
-const authorizationCr = (root) => {
+const authorizationCr = () => {
+    const root = document.getElementById('root');
     root.innerHTML = '';
     const authorization = new Authorization('root');
 }
 
 // базовая страница
-const adminPanelCr = (root) => {
+const adminPanelCr = () => {
+    const root = document.getElementById('root');
     root.innerHTML = '';
     const adminPanel = new AdminPanel('root');
     const sidebar = new Sidebar('sidebar');
     const topPanel = new TopPanel('t-panel')
+
 }
 
 // добавление пользователя
@@ -73,7 +75,7 @@ const allUsers = () => {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
     // const allUsers = new AllUsers('main-content');
-    const allUsersItem = new AllUsersItem('main-content')
+    const allUsersItem = new AllUsersItem('main-content');
 }
 
 //order list
@@ -81,8 +83,6 @@ const ordersList = () => {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
     const ordersList = new ListOfOrder('main-content');
-    const ordersListItem = new ListOfOrderItem('l-order');
-    
 }
 
 //add orders

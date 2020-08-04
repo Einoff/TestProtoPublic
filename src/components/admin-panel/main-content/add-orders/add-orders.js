@@ -4,11 +4,12 @@ import './add-orders.css'
 import AllUsers from '../all-users/all-users';
 import AllUsersItem from '../all-users/all-users-item/all-users-item';
 
-class AddOrders extends Component{
-    constructor(id){
+class AddOrders extends Component {
+    constructor(id) {
         super(id);
         this.insertHTML(html);
         BtnHandler();
+        pushNewOrderOnServer();
     }
 }
 
@@ -26,13 +27,13 @@ const BtnHandler = () => {
 
     addUsersBtninOrder.addEventListener('click', (e) => {
         // добавить существующего пользователя из списка
-        if(e.target.id == 'addUserBtn'){
+        if (e.target.id == 'addUserBtn') {
             clientInput.style.display = 'flex';
-            allUsersInOrderBlock.innerHTML = '';   
-            addOldUsers(); 
-        } 
+            allUsersInOrderBlock.innerHTML = '';
+            addOldUsers();
+        }
         //добавить новго пользователя
-        else if(e.target.id == 'addNewUserBtn'){
+        else if (e.target.id == 'addNewUserBtn') {
             clientInput.style.display = 'none';
             allUsersInOrderBlock.innerHTML = '';
             addNewUsers();
@@ -46,24 +47,24 @@ const BtnHandler = () => {
         const allUsersList = new AllUsersItem('allUsersInOrder', false);
         const orderUsersList = document.getElementById('allUsersItemTarget');
         const addOrdersEl = document.querySelector('.add-orders');
-        
+
         orderUsersList.addEventListener('click', (e) => {
-            if(e.target.closest('.all-users-item')){
-               
-               const currentItem = e.target.closest('.all-users-item');
-               const nameUser = currentItem.querySelector('.all-users-item__name').innerText;
-               const urlAvatar = currentItem.querySelector('.all-users-item__photo').getAttribute('src');
-               clientPhoto.setAttribute('src', urlAvatar);
-               clientName.innerHTML = nameUser;
-               const userId = currentItem.dataset.id;
-               orderInputId.value = userId
-               clientInput.style.border = '2px solid #33ff2cea';
-               allUsersInOrderBlock.innerHTML = '';
-               addOrdersEl.scroll(0,0);
+            if (e.target.closest('.all-users-item')) {
+
+                const currentItem = e.target.closest('.all-users-item');
+                const nameUser = currentItem.querySelector('.all-users-item__name').innerText;
+                const urlAvatar = currentItem.querySelector('.all-users-item__photo').getAttribute('src');
+                clientPhoto.setAttribute('src', urlAvatar);
+                clientName.innerHTML = nameUser;
+                const userId = currentItem.dataset.id;
+                orderInputId.value = userId;
+                clientInput.style.border = '2px solid #33ff2cea';
+                allUsersInOrderBlock.innerHTML = '';
+                addOrdersEl.scroll(0, 0);
             }
         })
     }
-    
+
     const addNewUsers = () => {
         allUsersInOrder.innerHTML = '';
         newUsersInput.classList.toggle('display-none');
@@ -71,8 +72,19 @@ const BtnHandler = () => {
         clientPhoto.setAttribute('src', '');
         clientName.innerHTML = 'Клиент не выбран';
         clientInput.style.border = '2px solid #ff6247ea';
-        
+
     }
+}
+
+const pushNewOrderOnServer = () => {
+    const orderForm = document.getElementById('add-order');
+    const addOrderBtn = document.getElementById('add-order-btn');
+    addOrderBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = './service/addorder.php';
+        const formData = new FormData(orderForm);
+        fetch(url, {method: 'POST', body: formData});
+    })
 }
 
 

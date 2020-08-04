@@ -8,10 +8,12 @@ return`
         <input type="text" name="fname" placeholder="Имя" class="add-users__input">
         <input type="text" name="lname" placeholder="Фамилия" class="add-users__input">
         <input type="text" name="email" placeholder="Почта (email)" class="add-users__input">
-        <input type="number" name="tel" placeholder="Телефон" class="add-users__input">
+        <input type="text" name="tel" placeholder="Телефон" class="add-users__input">
         <input type="text" name="pass" placeholder="Пароль" class="add-users__input">
         <input type="text" name="d-birth" placeholder="Дата рождения" class="add-users__input">
         <input type="text" name="inst" placeholder="Instagram" class="add-users__input">
+        <input type="text" name="tcontact" placeholder="Тип контакта" class="add-users__input">
+        <input type="text" name="tclient" placeholder="Категория клиента" class="add-users__input">
         <label for="t-area" class="t-area__label">
             <span class="t-area__title">Дополнительная информация:</span>
             <textarea name="comments" id="t-area" class="add-users__t-area"></textarea>

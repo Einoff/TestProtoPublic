@@ -4,8 +4,8 @@ export default class Component {
     }
 
     //рендерит компонент в DOM
-    insertHTML(html){
-        this.el.insertAdjacentHTML('beforeEnd', html);
+    insertHTML(html, target='beforeEnd'){
+        this.el.insertAdjacentHTML(target, html);
     }
 
     //устанавливает адрес для роутинга

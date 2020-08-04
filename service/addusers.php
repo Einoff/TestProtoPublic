@@ -1,6 +1,4 @@
 <?php 
-
-    
     if(!empty($_POST)){
 
         if(empty($_POST["pass"])){
@@ -32,11 +30,11 @@
         $photoType = $photoType[1];
         $img = $id . "." . $photoType;
     
-        $photoUrlTo = "../src/assets/image/templ-img/avatars/" . $id . "." . $photoType;
+        $photoUrlTo = "../assets/image/templ-img/avatars/" . $id . "." . $photoType;
     
         $moveStatus = move_uploaded_file ( $photoUrlFrom , $photoUrlTo );
     
-        $mysqli = new mysqli("127.0.0.1", "root", "root", "photo_bd");
+        $mysqli = new mysqli("localhost", "bezleplp_cabinet", "zB5GO%bh", "bezleplp_cabinet"); 
     
         // проверяет есть ли пользователь с таким email в базе
         $result = $mysqli->query("SELECT * FROM `cab_users` WHERE `email` = '$email'");

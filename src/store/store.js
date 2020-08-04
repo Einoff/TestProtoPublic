@@ -1,12 +1,14 @@
-const store = {
-    state: {
-        users:[]
-    },
-
-    getState(){
+class Store {
+    constructor(){
+        this.state = {
+            users:[],
+            orders: [],
+            key: ''
+        }
+    }
+    getState = () => {
         return this.state
     }
 }
 
-export default store
-window.store = store;
+export default Store

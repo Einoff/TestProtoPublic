@@ -1,7 +1,6 @@
 <?php 
     
 
-
     if(!empty($_POST)){
 
         if(empty($_POST["email"])){
@@ -12,12 +11,12 @@
         }
 
 
-
-        $mysqli = new mysqli("127.0.0.1", "root", "root", "photo_bd");
+        $mysqli = new mysqli("localhost", "bezleplp", "zB5GO%bh", "bezleplp_cabinet");  
+        echo($mysqli_connect_errno);
         $email = $_POST["email"];
         $pass = $_POST["pass"];
 
-   
+        var_dump
 
 
         //поиск авторизуемого поьзователя в базе данных
