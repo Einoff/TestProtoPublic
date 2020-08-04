@@ -5,32 +5,32 @@ import UsersProfile from '../../users-profile/users-profile';
 
 
 class AllUsersItem extends Component {
-    constructor(id) {
+    constructor(id, modalProfile=true) {
         super(id);
-        this.insertHTML(html)
-        fetchAp();
+        this.insertHTML(html);
+        fetchAp(modalProfile);
     }
 }
 
-let html = `<div>Загрузка...</div>`;
+let html = `<div class="all-users-item-list" id="allUsersItemTarget">Загрузка...</div>`;
 
 //получает всех users
-const fetchAp = () => {
+const fetchAp = (modalProfile) => {
     const url = 'http://localhost:8080/api/backend/allUsers.php/?key=admin';
     fetch(url)
         .then(response => response.json())
-        .then(data => {
-            const localState = store.getState();
-            stateUpdate(data, localState);
-            return allUsersItemHtml(data)
-        })
+        //мапит данные
+        .then(data => allUsersItemHtml(data))
         .then(preparedHtml => { allUsersItemHtmlInsert(preparedHtml) })
-        .then(() => {userItemEventHandler()})
+        .then(() => {
+            if(modalProfile){
+                userItemEventHandler();
+            }
+        })
 }
 
 // формирует html список пользователей на основе полученных данных 
 const allUsersItemHtml = (data) => {
-    console.log(data);
     let allUsersHtml = data.map(user => {
         return `
         <div class="all-users-item" data-id="${user.id}">
@@ -49,17 +49,17 @@ const allUsersItemHtml = (data) => {
 
 //добавление загруженных и обработанных данных в html
 const allUsersItemHtmlInsert = (preparedHtml) => {
-    const targetIns = document.getElementById('all-users');
+    const targetIns = document.getElementById('allUsersItemTarget');
     targetIns.innerHTML = '';
     targetIns.insertAdjacentHTML('beforeEnd', preparedHtml);
 }
 
 //записывает response data в state.users
-const stateUpdate = (data, state) => {
-    state.users = data;
-}
+// const stateUpdate = (data, state) => {
+//     state.users = data;
+// }
 
-//добовляет addEventListner на list user item и 
+//добовляет addEventListner на list user item для просмотра профиля
 const userItemEventHandler = () => {
     let allUserItems = document.querySelectorAll('.all-users-item');
     allUserItems.forEach(item => {
@@ -71,6 +71,9 @@ const userItemEventHandler = () => {
     })
 }
 
-//активрует (создает объект класса UserProfile) модельное окно подробного просмотра профиля
+// //добовляет addEventListner на list user item для выбора пользователя в заказе
+// const usersListEventOrder = () => {
+
+// }
 
 export default AllUsersItem

@@ -1,11 +1,42 @@
 const addOrdersHtml = () => {
 
 return `<div class="add-orders">
-    <div class="add-orders__btn-wrapp">
-        <button type="button" class="add-orders__btn">Выбрать клиента</button>
-        <button type="button" class="add-orders__btn">Добавить нового клиента</button>
+
+    
+    <div class="add-orders__btn-wrapp" id="btn-wrapp">
+        <button type="button" class="add-orders__btn" id="addUserBtn">Выбрать клиента</button>
+        <button type="button" class="add-orders__btn" id="addNewUserBtn">Добавить нового клиента</button>
     </div>
+    <div class="add-orders__users-list" id="allUsersInOrder"></div>
     <form action="" class="add-orders__form">
+        <!-- add users in order form -->
+            <div class="add-orders__new-user display-none" id="newUsersInput">
+                <input type="text" name="fname" placeholder="Имя" class="add-users__input">
+                <input type="text" name="lname" placeholder="Фамилия" class="add-users__input">
+                <input type="text" name="email" placeholder="Почта (email)" class="add-users__input">
+                <input type="number" name="tel" placeholder="Телефон" class="add-users__input">
+                <input type="text" name="pass" placeholder="Пароль" class="add-users__input">
+                <input type="text" name="d-birth" placeholder="Дата рождения" class="add-users__input">
+                <input type="text" name="inst" placeholder="Instagram" class="add-users__input">
+                <label for="t-area" class="t-area__label">
+                    <span class="t-area__title">Дополнительная информация:</span>
+                    <textarea name="comments" id="t-area" class="add-users__t-area"></textarea>
+                </label>
+                <label for="" class="add-users__file-label">
+                    <span class="t-area__file">Загрузить аватар:</span>
+                    <input type="file" name="photo" class="add-users__file">
+                </label>
+            </div>
+
+        <!-- orders form -->
+        <input  id="order-input-id" type="text" name="id" placeholder="id" class="add-users__input" >
+
+            <div class="add-orders__client">
+                <div class="add-orders__client-photo">
+                    <img src="" alt="" class="client-photo">
+                </div>
+                <div class="client-name">Клиент не выбран</div>
+            </div>
         <label for="" class="add-orders__label">
             Название фотосессии:
             <input type="text" class="add-o__input">

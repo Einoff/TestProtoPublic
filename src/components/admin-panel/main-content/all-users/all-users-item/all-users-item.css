@@ -34,3 +34,7 @@
 .all-users-item__tel {
     width: 24%;
  }
+ .all-users-item-list{
+     display: flex;
+     flex-direction: column;
+ }

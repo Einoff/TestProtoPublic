@@ -72,8 +72,8 @@ const addUserCr = () => {
 const allUsers = () => {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
-    const allUsers = new AllUsers('main-content');
-    const allUsersItem = new AllUsersItem('all-users')
+    // const allUsers = new AllUsers('main-content');
+    const allUsersItem = new AllUsersItem('main-content')
 }
 
 //order list
