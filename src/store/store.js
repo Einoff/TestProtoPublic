@@ -3,7 +3,8 @@ class Store {
         this.state = {
             users:[],
             orders: [],
-            key: ''
+            who: {},
+            prodItems: []
         }
     }
     getState = () => {

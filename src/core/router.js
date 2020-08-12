@@ -7,11 +7,18 @@ import AllUsers from '../components/admin-panel/main-content/all-users/all-users
 import AllUsersItem from '../components/admin-panel/main-content/all-users/all-users-item/all-users-item';
 import ListOfOrder from '../components/admin-panel/main-content/list-of-orders/list-of-orders';
 import ListOfOrderItem from '../components/admin-panel/main-content/list-of-orders/list-of-orders-item/list-of-orders-item';
-import Order from '../components/admin-panel/main-content/orders/orders';
+// import Order from '../components/admin-panel/main-content/orders/orders';
 import Gallery from '../components/admin-panel/main-content/gallery/gallery';
 import AddOrders from '../components/admin-panel/main-content/add-orders/add-orders';
 import Store from '../store/store';
-
+import getAuthUserData from '../service/getAuthUserData';
+import getUsersFromServer from '../service/getUsers';
+import getOrdersFromServer from '../service/getOrders';
+import setCurrentTitle from './setCurrentTitle';
+import Settings from '../components/admin-panel/main-content/settings/settings'
+import getProdItems from '../service/getProdItmes';
+import ProdItems from '../components/admin-panel/main-content/settings/prod-settings/prod-items/prod-items'
+import ProdSettings from '../components/admin-panel/main-content/settings/prod-settings/prod-settings';
 
 
 
@@ -37,6 +44,10 @@ export const routEvent = () => {
         case 'addorders':
             addOrders();
             break;
+        case 'setting':
+            settings();
+            break;
+        
     }
 }
 
@@ -54,12 +65,17 @@ const authorizationCr = () => {
 }
 
 // базовая страница
-const adminPanelCr = () => {
+const adminPanelCr = async () => {
     const root = document.getElementById('root');
     root.innerHTML = '';
-    const adminPanel = new AdminPanel('root');
+    await getAuthUserData();
+    await getUsersFromServer();
+    await getOrdersFromServer();
+    await getProdItems();
+    const adminPanel = await new AdminPanel('root');
     const sidebar = new Sidebar('sidebar');
-    const topPanel = new TopPanel('t-panel')
+    const topPanel = new TopPanel('t-panel');
+    setCurrentTitle('>> Dashboard');
 
 }
 
@@ -68,6 +84,7 @@ const addUserCr = () => {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
     const addNewUsers = new AddNewUsers('main-content');
+    setCurrentTitle('>> Добавить нового пользователя');
 }
 
 //все пользователи
@@ -76,6 +93,7 @@ const allUsers = () => {
     mainContent.innerHTML = '';
     // const allUsers = new AllUsers('main-content');
     const allUsersItem = new AllUsersItem('main-content');
+    setCurrentTitle('>> Список пользователей');
 }
 
 //order list
@@ -83,6 +101,7 @@ const ordersList = () => {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
     const ordersList = new ListOfOrder('main-content');
+    setCurrentTitle('>> Список заказов');
 }
 
 //add orders
@@ -91,6 +110,18 @@ const addOrders = () => {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
     const addOrders = new AddOrders('main-content');
+    setCurrentTitle('>> Добавить новый заказ');
+}
+
+//settings
+
+const settings = () => {
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = '';
+    const settings = new Settings('main-content');
+    const prodSettings = new ProdSettings('settings');
+    const prodItems = new ProdItems('prodItems');
+    setCurrentTitle('>> Настройки');
 }
 
 

@@ -10,7 +10,8 @@ class AllUsersItem extends Component {
         super(id);
         this.users = store.getState().users;
         this.insertHTML(html);
-        getUsersList(this.users);
+        this.modalProfile = modalProfile;
+        getUsersList(this.users, this.modalProfile);
     }
 
 }
@@ -21,8 +22,8 @@ let html = ` <div id="search-target" class="all-users-item-list-wrapp">
      </div> 
 `;
 
-const getUsersList = (users) => {
-    allUsersItemHtmlInsert(users);
+const getUsersList = (users, modalProfile) => {
+    allUsersItemHtmlInsert(users, modalProfile);
 }
 
 // формирует html список пользователей на основе полученных данных 
@@ -44,26 +45,29 @@ const allUsersItemHtml = (users) => {
 }
 
 //добавление загруженных и обработанных данных в html
-const allUsersItemHtmlInsert = async (users) => {
+const allUsersItemHtmlInsert = async (users, modalProfile) => {
     const preparedHtml = await allUsersItemHtml(users);
     const targetIns = document.getElementById('allUsersItemTarget');
     // targetIns.innerHTML = '';
     targetIns.insertAdjacentHTML('beforeEnd', preparedHtml);
-    userItemEventHandler();
+    userItemEventHandler(modalProfile);
 }
 
 
 //добовляет addEventListner на list user item для просмотра профиля
 
-const userItemEventHandler = () => {
-    let allUserItems = document.querySelectorAll('.all-users-item');
-    allUserItems.forEach(item => {
-        item.addEventListener('click', () => {
-            let usersId = item.dataset.id
-            const modalUserProfile = new UsersProfile('admin-panel', usersId);
-
+const userItemEventHandler = (modalProfile) => {
+    if(modalProfile){
+        let allUserItems = document.querySelectorAll('.all-users-item');
+        allUserItems.forEach(item => {
+            item.addEventListener('click', () => {
+                let usersId = item.dataset.id
+                const modalUserProfile = new UsersProfile('admin-panel', usersId);
+    
+            })
         })
-    })
+    }
+
 }
 
 //Добавляет поиск 

@@ -1,6 +1,7 @@
 const { default: Component } = require("../../../../core/Component");
 import './list-of-orders.css'
 import { store } from '../../../../index'
+import Order from '../orders/orders';
 
 class ListOfOrder extends Component {
     constructor(id, usersId) {
@@ -8,26 +9,27 @@ class ListOfOrder extends Component {
         this.usersId = usersId;
         this.orders = store.getState().orders
         this.insertHTML(getOrderItemsHtml(this.orders, this.usersId));
+        ordersItemEventHandler();
     }
 }
 
 const getOrderItemsHtml = (orders, usersId) => {
-    
-    if(orders.length > 0 && !usersId){
-        return reduceOrders(orders) 
 
-    }else if (orders.length > 0 && usersId){
+    if (orders.length > 0 && !usersId) {
+        return reduceOrders(orders)
+
+    } else if (orders.length > 0 && usersId) {
         const filtrOrdersById = orders.filter(elem => {
             return elem.id == usersId
-        } )
+        })
 
         return reduceOrders(filtrOrdersById)
-    }else{
+    } else {
         return 'заказы не найдены'
     }
 }
 
-const reduceOrders = (orders) =>{
+const reduceOrders = (orders) => {
     const initial = '';
     let orderItemHtml = orders.reduce((accumHtml, order) => {
         let html = `
@@ -47,7 +49,21 @@ const reduceOrders = (orders) =>{
         return accumHtml + html
     }, initial)
 
-    return `<div class="list-of-order" id="l-order">${orderItemHtml}</div>` 
+    return `<div class="list-of-order" id="l-order">${orderItemHtml}</div>`
+}
+
+const ordersItemEventHandler = () => {
+    const orderItems = document.querySelectorAll('.order-item');
+    orderItems.forEach(item => {
+        item.addEventListener('click', () => {
+            openOrder(item);
+        })
+    })
+
+}
+const openOrder = (item) => {
+    const itemId = item.dataset.id;
+    const orderDetails = new Order('main-content', itemId);
 }
 
 export default ListOfOrder

@@ -8,7 +8,7 @@ return`
             <li><a href="#allusers" class="sidebar__item">Список пользователей</a></li>
             <li><a href="#addorders" class="sidebar__item">Добавить заказ</a></li>
             <li><a href="#allorders" class="sidebar__item">Список заказов</a></li>
-            <li><a href="#" class="sidebar__item">Element 2</a></li>
+            <li><a href="#setting" class="sidebar__item">Настройки</a></li>
             <li><a href="#" class="sidebar__item">Element 3</a></li>
             <li><a href="#" class="sidebar__item">Element 4</a></li>
             <li><a href="#" class="sidebar__item">Element 5</a></li>

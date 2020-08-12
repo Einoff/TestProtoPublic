@@ -8,12 +8,12 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0,0,0, 0.7);
-    z-index: 50;
+    z-index: 100;
    
 }
 .order__inner { 
-    width: 90%;
-    height: 90%;
+    width: 97%;
+    height: 97%;
     background-color: #fff;
     position: relative;
     overflow: hidden;

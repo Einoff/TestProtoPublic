@@ -20,6 +20,7 @@ return `<div class="add-orders">
                 <input type="text" name="inst" placeholder="Instagram" class="add-users__input">
                 <input type="text" name="tcontact" placeholder="Тип контакта" class="add-users__input">
                 <input type="text" name="tclient" placeholder="Категория клиента" class="add-users__input">
+                <input type="text" name="address" placeholder="Адрес" class="add-users__input">
                 <label for="t-area" class="t-area__label">
                     <span class="t-area__title">Дополнительная информация:</span>
                     <textarea name="ucomments" id="t-area" class="add-users__t-area"></textarea>
@@ -31,7 +32,7 @@ return `<div class="add-orders">
             </div>
 
         <!-- orders form -->
-        <input  id="order-input-id" type="text" name="id" placeholder="id" class="add-users__input" >
+        <input  id="order-input-id" type="hidden" name="id" placeholder="id" class="add-users__input" >
 
             <div class="add-orders__client">
                 <div class="add-orders__client-photo">
@@ -53,7 +54,7 @@ return `<div class="add-orders">
         </label>
         <label for="#" class="add-orders__label">
             Стоимость:
-            <input name="fullprice" type="date" class="add-o__input">
+            <input name="fullprice" type="text" class="add-o__input">
         </label>
         <label for="#" class="add-orders__label">
             Статус заказа:

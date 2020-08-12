@@ -81,7 +81,7 @@ const pushNewOrderOnServer = () => {
     const addOrderBtn = document.getElementById('add-order-btn');
     addOrderBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        const url = './service/addorder.php';
+        const url = 'http://localhost:8080/api/backend/addorder.php';
         const formData = new FormData(orderForm);
         fetch(url, {method: 'POST', body: formData});
     })
