@@ -4,7 +4,11 @@ class Store {
             users:[],
             orders: [],
             who: {},
-            prodItems: []
+            prodItems: [],
+            fetchUrl: {
+                removeElUrl: `http://localhost:8080/api/backend/remove.php`,
+                updateElUrl: `http://localhost:8080/api/backend/update-serv-el.php`
+            }
         }
     }
     getState = () => {

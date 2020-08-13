@@ -11,9 +11,9 @@ const prodSettingsHtml = () => {
             <div class="settings-product">
                 <form class="product__add" id="addProdForm">
                     Имя продукта:
-                    <input type="text" class="add-name" name="proditem">
+                    <input type="text" class="settings-add-input" name="proditem">
                     Цена:
-                    <input type="text" class="add-price" name="prodprice">
+                    <input type="text" class="settings-add-input" name="prodprice">
                     <div class="add__wrap">
                         <button class="add-product-btn" id="addProdBtn">Добавить</button>
                         <div class="add-check display-none">

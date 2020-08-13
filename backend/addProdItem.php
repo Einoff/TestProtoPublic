@@ -2,7 +2,7 @@
 
     if(!empty($_POST)){
         $proditem = $_POST["proditem"];
-        $prodprice = $_POST["prodprice"] || 1;
+        $prodprice = !empty($_POST["prodprice"]) ? $_POST["prodprice"] : 1;
         if(!empty($_COOKIE["authkey"])){
             $cookie = $_COOKIE["authkey"];
             $mysqli = new mysqli("127.0.0.1", "root", "root", "photo_bd");
