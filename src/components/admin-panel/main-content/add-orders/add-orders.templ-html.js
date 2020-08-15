@@ -1,8 +1,16 @@
-const addOrdersHtml = () => {
+const addOrdersHtml = (prodItems) => {
+    const initial = '';
+    let count = 1;
+    const prodItemshtml = prodItems.reduce((accumHtml, item) => {
+        let itemHtml = `            
+        <div class="add-orders__price-btn">
+            <input id="id${count}" type="checkbox" name="itemprice[]" value="${item.id}" class="add-orders__price-item">
+            <label for="id${count++}" class="add-orders__price-lable">+ ${item.product}</label>
+        </div>`
+        return accumHtml + itemHtml
+    }, initial)
 
-return `<div class="add-orders">
-
-    
+    return `<div class="add-orders">
     <div class="add-orders__btn-wrapp" id="btn-wrapp">
         <button type="button" class="add-orders__btn" id="addUserBtn">Выбрать клиента</button>
         <button type="button" class="add-orders__btn" id="addNewUserBtn">Добавить нового клиента</button>
@@ -11,9 +19,9 @@ return `<div class="add-orders">
     <form class="add-orders__form" id="add-order">
         <!-- add users in order form -->
             <div class="add-orders__new-user display-none" id="newUsersInput">
-                <input type="text" name="fname" placeholder="Имя" class="add-users__input">
+                <input type="text" id="o-uname" name="fname" placeholder="Имя" class="add-users__input">
                 <input type="text" name="lname" placeholder="Фамилия" class="add-users__input">
-                <input type="text" name="email" placeholder="Почта (email)" class="add-users__input">
+                <input type="text" id="o-uemail" name="email" placeholder="Почта (email)" class="add-users__input">
                 <input type="text" name="tel" placeholder="Телефон" class="add-users__input">
                 <input type="text" name="pass" placeholder="Пароль" class="add-users__input">
                 <input type="text" name="d-birth" placeholder="Дата рождения" class="add-users__input">
@@ -98,39 +106,7 @@ return `<div class="add-orders">
             Выбрать услуги:
         </div>
         <div class="add-orders__price">
-
-            <div class="add-orders__price-btn">
-                <input id="id1" type="checkbox" name="itemprice[]" value="8" class="add-orders__price-item">
-                <label for="id1" class="add-orders__price-lable">+ Съемка</label>
-            </div>
-            <div class="add-orders__price-btn">
-                <input id="id2" type="checkbox" name="itemprice[]" value="1" class="add-orders__price-item">
-                <label for="id2" class="add-orders__price-lable">+ Аренда студии</label>
-            </div>
-            <div class="add-orders__price-btn">
-                <input id="id3" type="checkbox" name="itemprice[]" value="2" class="add-orders__price-item">
-                <label for="id3" class="add-orders__price-lable">+ Макияж</label>
-            </div>
-            <div class="add-orders__price-btn">
-                <input id="id8" type="checkbox" name="itemprice[]" value="3" class="add-orders__price-item">
-                <label for="id8" class="add-orders__price-lable">+ Причёска</label>
-            </div>
-            <div class="add-orders__price-btn">
-                <input id="id4" type="checkbox" name="itemprice[]" value="4" class="add-orders__price-item">
-                <label for="id4" class="add-orders__price-lable">+ Проезд</label>
-            </div>
-            <div class="add-orders__price-btn">
-                <input id="id5" type="checkbox" name="itemprice[]" value="5" class="add-orders__price-item">
-                <label for="id5" class="add-orders__price-lable">+ Аренда оджеды</label>
-            </div>
-            <div class="add-orders__price-btn">
-                <input id="id6" type="checkbox" name="itemprice[]" value="6" class="add-orders__price-item">
-                <label for="id6" class="add-orders__price-lable">+ Фотокниги</label>
-            </div>
-            <div class="add-orders__price-btn">
-                <input id="id7" type="checkbox" name="itemprice[]" value="7" class="add-orders__price-item">
-                <label for="id7" class="add-orders__price-lable">+ Сертификат на фотосесию</label>
-            </div>
+            ${prodItemshtml}
         </div>
         <label for="t-area" class="t-area__label">
             <span class="t-area__title">Дополнительная информация:</span>

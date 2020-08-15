@@ -3,12 +3,14 @@ import './prod-settings.css'
 import prodSettingsHtml from './prod-settings.html';
 import updateState from '../../../../../service/updateState';
 import ProdItems from './prod-items/prod-items';
+import { store } from '../../../../../index';
 
 class ProdSettings extends Component {
     constructor(id){
         super(id);
+        this.fetchUrl = store.getState().fetchUrl.addProdItem;
         this.insertHTML(prodSettingsHtml());
-        addProdItem();
+        addProdItem(this.fetchUrl);
     }
 }
 
@@ -20,12 +22,12 @@ const updateProdItems = async () => {
 
 }
 
-const addProdItem = () => {
+const addProdItem = (fetchUrl) => {
     const addProdItemForm = document.getElementById('addProdForm');
     const addProductCheck = document.querySelector('.add-check');
     addProdItemForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const url = 'http://localhost:8080/api/backend/addProdItem.php'
+        const url = fetchUrl;
         const formData = new FormData(addProdItemForm);
         fetch(url, {
             method: 'POST',

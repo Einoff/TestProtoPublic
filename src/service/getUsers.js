@@ -1,7 +1,7 @@
 import { store } from "../index";
 
 const getUsersFromServer = async() => {
-    const url = `http://localhost:8080/api/backend/getUsers.php`;
+    const url = store.getState().fetchUrl.getUsers;
     await fetch(url)
         .then(response => response.json())
         .then(data => {

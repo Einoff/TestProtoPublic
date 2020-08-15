@@ -1,7 +1,7 @@
 import { store } from "../index";
 
 const getAuthUserData = async () => {
-    const url = `http://localhost:8080/api/backend/getAuthUserData.php`;
+    const url = store.getState().fetchUrl.getAuthUserData;
     await fetch(url)
         .then(response => response.json())
         .then(data => {

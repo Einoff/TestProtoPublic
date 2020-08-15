@@ -3,14 +3,9 @@ import AdminPanel from '../components/admin-panel/admin-panel'
 import Sidebar from '../components/admin-panel/sidebar/sidebar'
 import TopPanel from '../components/admin-panel/top-panel/top-panel';
 import AddNewUsers from '../components/admin-panel/main-content/add-users/add-users';
-import AllUsers from '../components/admin-panel/main-content/all-users/all-users';
-import AllUsersItem from '../components/admin-panel/main-content/all-users/all-users-item/all-users-item';
+import AllUsersItem from '../components/admin-panel/main-content/add-users/all-users-item/all-users-item';
 import ListOfOrder from '../components/admin-panel/main-content/list-of-orders/list-of-orders';
-import ListOfOrderItem from '../components/admin-panel/main-content/list-of-orders/list-of-orders-item/list-of-orders-item';
-// import Order from '../components/admin-panel/main-content/orders/orders';
-import Gallery from '../components/admin-panel/main-content/gallery/gallery';
 import AddOrders from '../components/admin-panel/main-content/add-orders/add-orders';
-import Store from '../store/store';
 import getAuthUserData from '../service/getAuthUserData';
 import getUsersFromServer from '../service/getUsers';
 import getOrdersFromServer from '../service/getOrders';

@@ -26,7 +26,7 @@ const prodItemHandler = (state) => {
                 
             } else if (e.target.id == 'p-i-close') {
                 const id = e.currentTarget.dataset.id;
-                const targetTable = 'prod'
+                const targetTable = 'itemprice'
                 //удалить продукт
                 removeEl(id, targetTable, state);
             }

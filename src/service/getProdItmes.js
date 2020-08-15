@@ -1,7 +1,7 @@
 import { store } from "../index";
 
 const getProdItems = async() => {
-    const url = `http://localhost:8080/api/backend/getProdItems.php`;
+    const url = store.getState().fetchUrl.getProdItems;
     await fetch(url)
         .then(response => response.json())
         .then(data => {

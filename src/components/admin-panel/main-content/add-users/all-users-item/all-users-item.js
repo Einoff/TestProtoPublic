@@ -3,6 +3,10 @@ import './all-users-item.css'
 import UsersProfile from '../../users-profile/users-profile';
 import Search from '../../search/search';
 import { store } from '../../../../../index';
+import removeElData from '../../../../../service/removeElData';
+import fetchPost from '../../../../../service/fetchPost';
+import updateState from '../../../../../service/updateState';
+import reRenderEl from '../../../../../service/reRenderEl';
 
 
 class AllUsersItem extends Component {
@@ -11,7 +15,8 @@ class AllUsersItem extends Component {
         this.users = store.getState().users;
         this.insertHTML(html);
         this.modalProfile = modalProfile;
-        getUsersList(this.users, this.modalProfile);
+        this.fetchUrl = store.getState().fetchUrl.removeElUrl;
+        getUsersList(this.users, this.modalProfile, this.fetchUrl);
     }
 
 }
@@ -22,8 +27,8 @@ let html = ` <div id="search-target" class="all-users-item-list-wrapp">
      </div> 
 `;
 
-const getUsersList = (users, modalProfile) => {
-    allUsersItemHtmlInsert(users, modalProfile);
+const getUsersList = (users, modalProfile, fetchUrl) => {
+    allUsersItemHtmlInsert(users, modalProfile, fetchUrl);
 }
 
 // формирует html список пользователей на основе полученных данных 
@@ -37,6 +42,7 @@ const allUsersItemHtml = (users) => {
             <div class="all-users-item__name search-js">${user.fname} ${user.lname}</div>
             <div class="all-users-item__email">${user.email}</div>
             <div class="all-users-item__tel">${user.tel}</div>
+            <div class="all-users-item__del user-del-Js">&#10008;</div>
         </div>
         `
     }).join('')
@@ -45,29 +51,48 @@ const allUsersItemHtml = (users) => {
 }
 
 //добавление загруженных и обработанных данных в html
-const allUsersItemHtmlInsert = async (users, modalProfile) => {
+const allUsersItemHtmlInsert = async (users, modalProfile, fetchUrl) => {
     const preparedHtml = await allUsersItemHtml(users);
     const targetIns = document.getElementById('allUsersItemTarget');
     // targetIns.innerHTML = '';
     targetIns.insertAdjacentHTML('beforeEnd', preparedHtml);
-    userItemEventHandler(modalProfile);
+    userItemEventHandler(modalProfile, fetchUrl);
 }
 
 
 //добовляет addEventListner на list user item для просмотра профиля
 
-const userItemEventHandler = (modalProfile) => {
+const userItemEventHandler = (modalProfile, fetchUrl) => {
     if(modalProfile){
         let allUserItems = document.querySelectorAll('.all-users-item');
         allUserItems.forEach(item => {
-            item.addEventListener('click', () => {
-                let usersId = item.dataset.id
-                const modalUserProfile = new UsersProfile('admin-panel', usersId);
+            item.addEventListener('click', (e) => {
+                const userId = item.dataset.id
+                if(e.target.classList.contains('user-del-Js')){
+                    removeUser(userId, fetchUrl);
+                }else{
+                    const modalUserProfile = new UsersProfile('admin-panel', userId);
+                }
+
     
             })
         })
     }
 
+}
+
+//удалить пользователя из списка
+const removeUser = async(userId, fetchUrl) => {
+    const url = fetchUrl;
+    const table = 'cab_users';
+    const data = removeElData(userId, table);
+    const targetId = 'main-content';
+    await fetchPost(url, data);
+    await updateState('users');
+    reRenderEl(targetId, AllUsersItem)
+    // const mainContent = document.getElementById(targetId);
+    // mainContent.innerHTML = '';
+    // const allUsersItem = new AllUsersItem(targetId);
 }
 
 //Добавляет поиск 
