@@ -8,16 +8,15 @@ class Order extends Component {
         super(id);
         this.orderId = orderId;
         this.orders = store.getState().orders;
-        this.currentOrders = this.orders.find(order => order.id == this.orderId);
+        this.currentOrders = this.orders.find(order => order.onum == this.orderId);
         this.insertHTML(getCurrentOrder(this.currentOrders));
-        // getCurrentOrder(this.currentOrders);
         closeOrderModal();
     }
 
 }
 
 
-const getCurrentOrder = (currentOrders) => {
+const getCurrentOrder = (currentOrders) => {    
     const html = ordersHtml(currentOrders);
     return html
 }

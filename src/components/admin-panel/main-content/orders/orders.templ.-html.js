@@ -1,6 +1,12 @@
+import convertIndexToValue from "../../../../service/convertIndexToValue";
+
 let ordersHtml = (currentOrder) => {
     let {onum, oname, cdate, edate, fdate, fullprice, currency, ostatus, itemprice, ocomments, tsession, osource} = currentOrder
-return`
+    const ostatusValue = convertIndexToValue('ostatuslist', ostatus);
+    const sourceValue = convertIndexToValue('sourceorderlist', osource);
+    const typeSessionValue = convertIndexToValue('typesessionlist', tsession);
+    const prodItemsValue = convertIndexToValue('prodItems', itemprice, true);
+    return`
 <div class="order" id="order">
     <div class="order__inner">
         <div class="order__close" id="order-close"></div>
@@ -19,11 +25,11 @@ return`
                 </div>
                 <div class="order__info-details-row">
                     <div class="order__info-details-name">Тип фотосесси</div>
-                    <div class="order__info-details-value">${tsession}</div>
+                    <div class="order__info-details-value">${typeSessionValue || ''}</div>
                 </div>
                 <div class="order__info-details-row">
                     <div class="order__info-details-name">Источник</div>
-                    <div class="order__info-details-value">${osource}</div>
+                    <div class="order__info-details-value">${sourceValue || ''}</div>
                 </div>
                 <div class="order__info-details-row">
                     <div class="order__info-details-name">Дата создания</div>
@@ -39,7 +45,7 @@ return`
                 </div>
                 <div class="order__info-details-row">
                     <div class="order__info-details-name">Статус</div>
-                    <div class="order__info-details-value">${ostatus}</div>
+                    <div class="order__info-details-value">${ostatusValue || ''}</div>
                 </div>
                 <div class="order__info-details-row">
                     <div class="order__info-details-name">Стоимость</div>
@@ -47,7 +53,7 @@ return`
                 </div>
                 <div class="order__info-details-row">
                     <div class="order__info-details-name">Товары</div>
-                    <div class="order__info-details-value">${itemprice}</div>
+                    <div class="order__info-details-value">${prodItemsValue}</div>
                 </div>
                 <div class="order__info-details-row">
                     <div class="order__info-details-name">Комментарии</div>

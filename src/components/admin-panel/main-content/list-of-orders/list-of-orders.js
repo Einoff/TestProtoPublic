@@ -33,7 +33,7 @@ const reduceOrders = (orders) => {
     const initial = '';
     let orderItemHtml = orders.reduce((accumHtml, order) => {
         let html = `
-                <div class="order-item" data-id="${order.id}">
+                <div class="order-item" data-id="${order.onum}">
                     <div class="order-item__photo-wrapp">
                         <img src="../../../../assets/image/templ-img/avatars/${order.oimg}" alt="photo-session"
                             class="order-item__photo">
@@ -41,8 +41,8 @@ const reduceOrders = (orders) => {
                     <div class="order-item__content-block">
                         <div class="order-item__text">Покупка: <span>${order.onum}</span></div>
                         <div class="order-item__text">Название сессии: <span>${order.oname}</span></div>
-                        <div class="order-item__text">Дата создания: <span>${order.onum}</span></div>
-                        <div class="order-item__text">Статус: <span>Новый</span></div>
+                        <div class="order-item__text">Дата создания: <span>${order.cdate}</span></div>
+                        <div class="order-item__text">Статус:<span>Новый</span></div>
                     </div>
                 </div>
             `

@@ -22,6 +22,7 @@ const addOrdersHtml = (prodItems) => {
                 <input type="text" id="o-uname" name="fname" placeholder="Имя" class="add-users__input">
                 <input type="text" name="lname" placeholder="Фамилия" class="add-users__input">
                 <input type="text" id="o-uemail" name="email" placeholder="Почта (email)" class="add-users__input">
+                <input type="text" name="login" placeholder="Логин" class="add-users__input">
                 <input type="text" name="tel" placeholder="Телефон" class="add-users__input">
                 <input type="text" name="pass" placeholder="Пароль" class="add-users__input">
                 <input type="text" name="d-birth" placeholder="Дата рождения" class="add-users__input">
@@ -61,45 +62,29 @@ const addOrdersHtml = (prodItems) => {
             <input name="edate" type="date" class="add-o__input">
         </label>
         <label for="#" class="add-orders__label">
+            Дата завершения:
+            <input name="fdata" type="date" class="add-o__input">
+        </label>
+        <label for="#" class="add-orders__label">
             Стоимость:
             <input name="fullprice" type="text" class="add-o__input">
         </label>
         <label for="#" class="add-orders__label">
             Статус заказа:
-            <select name="ostatus"  class="add-o__input">
-                <option value="1">Новый</option>
-                <option value="2">Подготовка</option>
-                <option value="3">Съёмка проведена</option>
-                <option value="4">В обработке</option>
-                <option value="5">Готово к выдаче</option>
-                <option value="6">Выдано</option>
-                <option value="7">Выполнено и оплачено</option>
-                <option value="8">Выполнено и оплачено</option>
-                <option value="0">Отмена съёмки</option>
+            <select name="ostatus"  class="add-o__input" id="ostatuslist">
+
             </select>
         </label>
         <label for="#" class="add-orders__label">
             Вид съёмок:
-            <select name="tsession"  class="add-o__input">
-                <option value="1">Выписка</option>
-                <option value="2">Семейная</option>
-                <option value="3">Свадьба</option>
-                <option value="4">LoveStory</option>
-                <option value="5">Коммерческая</option>
-                <option value="6">Творческая</option>
-                <option value="7">Репортаж</option>
+            <select name="tsession"  class="add-o__input" id="typesessionlist">
+
             </select>
         </label>
         <label for="#" class="add-orders__label">
             Источник заказа:
-            <select name="osource"  class="add-o__input">
-                <option value="1">Instagram</option>
-                <option value="2">Уже клиент</option>
-                <option value="3">По рекомендации</option>
-                <option value="4">Звонок</option>
-                <option value="5">Сайт</option>
-                <option value="6">Реклама</option>
-                <option value="7">Онлайн-чат</option>
+            <select name="osource"  class="add-o__input" id="sourceorderlist">
+
             </select>
         </label>
         <div class="add-orders__price-title">

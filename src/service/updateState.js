@@ -1,3 +1,5 @@
+import getListsItemData from "./getListsItemData";
+
 const { default: getOrdersFromServer } = require("./getOrders");
 const { default: getUsersFromServer } = require("./getUsers");
 const { default: getProdItems } = require("./getProdItmes");
@@ -12,6 +14,10 @@ const updateState = async (targetUpdate) => {
             break;
         case 'prod':
             await getProdItems();
+            break;
+        case 'list':
+            await getListsItemData();
+            break;
     }
 }
 

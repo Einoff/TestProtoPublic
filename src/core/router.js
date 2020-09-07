@@ -14,6 +14,10 @@ import Settings from '../components/admin-panel/main-content/settings/settings'
 import getProdItems from '../service/getProdItmes';
 import ProdItems from '../components/admin-panel/main-content/settings/prod-settings/prod-items/prod-items'
 import ProdSettings from '../components/admin-panel/main-content/settings/prod-settings/prod-settings';
+import DefaultLists from '../components/admin-panel/main-content/settings/defaultLists/defaultLists';
+import getListsItemData from '../service/getListsItemData';
+import InsertListItems from '../components/admin-panel/main-content/get-lists-item/get-lists-item';
+import UpdateButtom from '../components/admin-panel/main-content/updateButtom/updateButtom';
 
 
 
@@ -67,11 +71,11 @@ const adminPanelCr = async () => {
     await getUsersFromServer();
     await getOrdersFromServer();
     await getProdItems();
+    await getListsItemData();
     const adminPanel = await new AdminPanel('root');
     const sidebar = new Sidebar('sidebar');
     const topPanel = new TopPanel('t-panel');
     setCurrentTitle('>> Dashboard');
-
 }
 
 // добавление пользователя
@@ -86,7 +90,6 @@ const addUserCr = () => {
 const allUsers = () => {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
-    // const allUsers = new AllUsers('main-content');
     const allUsersItem = new AllUsersItem('main-content');
     setCurrentTitle('>> Список пользователей');
 }
@@ -100,12 +103,14 @@ const ordersList = () => {
 }
 
 //add orders
-
-const addOrders = () => {
+const addOrders = async() => {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
-    const addOrders = new AddOrders('main-content');
+    const addOrders = await new AddOrders('main-content');
     setCurrentTitle('>> Добавить новый заказ');
+    const inserStatusList = new InsertListItems('ostatuslist');
+    const insertTypeSessionList = new InsertListItems('typesessionlist');
+    const insertSourceOrderList = new InsertListItems('sourceorderlist');
 }
 
 //settings
@@ -116,6 +121,10 @@ const settings = () => {
     const settings = new Settings('main-content');
     const prodSettings = new ProdSettings('settings');
     const prodItems = new ProdItems('prodItems');
+    const lists1 = new DefaultLists('settings', 'Статус заказа', 'ostatuslist');
+    const lists2 = new DefaultLists('settings', 'Тип фотосесии', 'typesessionlist');
+    const lists3 = new DefaultLists('settings', 'Источник заказа', 'sourceorderlist');
+    // const lists2 = new DefaultLists('settings', 'new title2', 'typesessionlist');
     setCurrentTitle('>> Настройки');
 }
 

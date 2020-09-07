@@ -9,6 +9,7 @@
     box-shadow: -5px 5px 7px 0 rgba(0, 0, 0, 0.1);
 }
 .settings-product{
+    position: relative;
     background-color: #fff;
     padding: 15px 30px;
     width: 49%;

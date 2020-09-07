@@ -1,8 +1,7 @@
-const reRenderEl = (targetId, className) => {
-    console.log('reRender');
+const reRenderEl = async (targetId, className, stateName) => {
     const mainContent = document.getElementById(targetId);
     mainContent.innerHTML = '';
-    const allUsersItem = new className(targetId);
+    const createEl = await new className(targetId, stateName);
 }
 
 export default reRenderEl

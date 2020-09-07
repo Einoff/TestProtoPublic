@@ -25,3 +25,13 @@ body{
 .display-none{
     display: none !important;
 }
+
+.form-validator{
+    margin: 0 auto 10px;
+    text-align: center;
+    color: red;
+}
+
+.border-error{
+    border: 1px solid red !important;
+}

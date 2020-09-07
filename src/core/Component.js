@@ -12,7 +12,12 @@ export default class Component {
     setRoutUrl(urlRout){
         window.location.href = urlRout;
     }
-    
+
+    clearHtml = (id) => {
+        const target = document.getElementById(id);
+        target.innerHTML = "";
+    }
+
 }
 
 

@@ -20,6 +20,7 @@
         $lname = $_POST["lname"];
         $fname = $_POST["fname"];
         $email = $_POST["email"];
+        $login = $_POST["login"];
         $tel = $_POST["tel"];
         $tcontact = $_POST["tcontact"];
         $tclient = $_POST["tclient"];
@@ -45,13 +46,13 @@
         $mysqli = new mysqli("127.0.0.1", "root", "root", "photo_bd");
     
         // проверяет есть ли пользователь с таким email в базе
-        $result = $mysqli->query("SELECT * FROM `cab_users` WHERE `email` = '$email'");
+        $result = $mysqli->query("SELECT * FROM `cab_users` WHERE `login` = '$login'");
         $user = $result->fetch_assoc();
     
         if(count($user) == 0){
                 mysqli_query($mysqli, 
-                "INSERT INTO `cab_users` (`id`, `fname`, `lname`, `email`, `tel`, `pass`, `birthday`, `insta`, `tcontact`, `tclient`, `ucomments`,`img`, `address`) 
-                VALUES ('$id', '$fname', '$lname', '$email', '$tel', '$pass', '$dbirth', '$inst', '$tcontact', '$tclient', '$ucomments','$img', '$address');"
+                "INSERT INTO `cab_users` (`id`, `fname`, `lname`, `email`, `tel`, `login`, `pass`, `birthday`, `insta`, `tcontact`, `tclient`, `ucomments`,`img`, `address`) 
+                VALUES ('$id', '$fname', '$lname', '$email', '$tel', '$login', $pass', '$dbirth', '$inst', '$tcontact', '$tclient', '$ucomments','$img', '$address');"
     
             );
     
