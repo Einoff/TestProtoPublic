@@ -34,13 +34,39 @@
 .order__top {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     min-height: 55px;
 
+ }
+ .order__top-wrap{
+    display: flex;
+    align-items: center;
+ }
+ .order__top-user{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    box-shadow: 1px 1px 13px 0px rgba(50, 50, 50, 0.1);
+    padding: 3px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+ }
+ .order__top-user:hover{
+    box-shadow: 1px 1px 13px 0px rgba(50, 50, 50, 0.2);
+ }
+ .order__top-user:active{
+    transform: scale(0.95)
+ }
+ .order__top-userpic{
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+     margin-right: 10px;
  }
 .order-title { }
 .order__name-session { }
 .order__info {
-    display: flex;
     margin-bottom: 30px;
  }
 .order__info-photo { 
@@ -72,7 +98,7 @@
 }
 .order__info-details-value {
     width: 60%;
-    padding: 6px;
+    /* padding: 6px; */
  }
 .order-download {
     margin-bottom: 30px;
@@ -125,3 +151,79 @@
  }
 .order__gallery-items { }
 .order__gallery-item { }
+
+.order-edit-btn{
+    position: relative;
+    display: flex;
+justify-content: center;
+align-items: center;
+/* position: absolute; */
+/* top: 5px; */
+/* right: 5px; */
+width: 45px;
+height: 45px;
+background: #f7f7f8;
+/* box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1); */
+color: #000;
+font-size: 28px;
+cursor: pointer;
+border-radius: 2px;
+border: 1px solid #dbdee5ea;
+margin-right: 20px;
+}
+
+
+.order__wrap-right{
+    display: flex;
+    
+}
+
+.order-edit-btn:hover{
+    box-shadow: inset 0px 0px 9px 1px rgba(0, 0, 0, 0.1);
+ }  
+
+ .order__info-wrap{
+    display: flex;
+}
+ .order__info-wrap input{
+     width: 100%;
+     border: none;
+     background-color: #fff;
+     color: #000000;
+     outline: none;
+     padding: 6px;
+ }
+
+ .order__info-wrap select{
+    width: 100%;
+    border: none;
+    background-color: #fff;
+    color: black;
+    outline: none;
+    padding: 6px;
+    opacity: 1;
+}
+
+ .orderEditInputActiv{
+    border-left: 3px solid #00ff00 !important;
+    /* background-color: green !important; */
+    /* color: #00ff00 !important; */
+    
+ }
+
+ .order-edit-submit{
+     display: block;
+     margin: 0 auto;
+     margin-top: 20px;
+     margin-bottom: 20px;
+     border: none;
+     background-color: #7366ff;
+     border-radius: 5px;
+     padding: 10px 25px;
+     color: #fff;
+     cursor: pointer;
+ }
+
+ .order-edit-submit:active {
+     transform: scale(0.95);
+ }

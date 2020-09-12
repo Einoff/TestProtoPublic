@@ -23,6 +23,7 @@
         $login = $_POST["login"];
         $tel = $_POST["tel"];
         $tcontact = $_POST["tcontact"];
+        $ucontact = $_POST["ucontact"];
         $tclient = $_POST["tclient"];
         $ucomments = $_POST["ucomments"];
         $dbirth = $_POST["d-birth"];
@@ -50,9 +51,10 @@
         $user = $result->fetch_assoc();
     
         if(count($user) == 0){
+                echo('добовляем пользователя');
                 mysqli_query($mysqli, 
-                "INSERT INTO `cab_users` (`id`, `fname`, `lname`, `email`, `tel`, `login`, `pass`, `birthday`, `insta`, `tcontact`, `tclient`, `ucomments`,`img`, `address`) 
-                VALUES ('$id', '$fname', '$lname', '$email', '$tel', '$login', $pass', '$dbirth', '$inst', '$tcontact', '$tclient', '$ucomments','$img', '$address');"
+                "INSERT INTO `cab_users` (`id`, `fname`, `lname`, `email`, `tel`, `login`, `pass`, `birthday`, `insta`, `tcontact`, `tclient`, `ucomments`, `img`, `address`, `ucontact`) 
+                VALUES ('$id', '$fname', '$lname', '$email', '$tel', '$login', '$pass', '$dbirth', '$inst', '$tcontact', '$tclient', '$ucomments', '$img', '$address', '$ucontact');"
     
             );
     

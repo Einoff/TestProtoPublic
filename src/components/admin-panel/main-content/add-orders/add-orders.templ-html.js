@@ -30,6 +30,7 @@ const addOrdersHtml = (prodItems) => {
                 <input type="text" name="tcontact" placeholder="Тип контакта" class="add-users__input">
                 <input type="text" name="tclient" placeholder="Категория клиента" class="add-users__input">
                 <input type="text" name="address" placeholder="Адрес" class="add-users__input">
+                <input type="text" name="ucontact" placeholder="общение в" class="add-users__input">
                 <label for="t-area" class="t-area__label">
                     <span class="t-area__title">Дополнительная информация:</span>
                     <textarea name="ucomments" id="t-area" class="add-users__t-area"></textarea>

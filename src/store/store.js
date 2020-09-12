@@ -1,7 +1,7 @@
 class Store {
-    constructor(){
+    constructor() {
         this.state = {
-            users:[],
+            users: [],
             orders: [],
             who: {},
             prodItems: [],
@@ -19,21 +19,19 @@ class Store {
                 getListItems: `http://localhost:8080/api/backend/getListItems.php`,
                 addListItem: `http://localhost:8080/api/backend/addListItem.php`,
                 updateList: `http://localhost:8080/api/backend/update-list.php`,
+                updateUsersEdit: `http://localhost:8080/api/backend/updateUsersEdit.php`,
             }
-            
+
 
         }
     }
     getState = () => {
         return this.state
     }
-    updateState = (stateItem) => {
-        if(stateItem){
-
-        }else{
-            
-        }
+    getListsItem = () => {
+        
     }
+
 }
 
 export default Store

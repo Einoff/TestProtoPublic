@@ -27,6 +27,7 @@
             $login = $_POST["login"];
             $tel = $_POST["tel"];
             $tcontact = $_POST["tcontact"];
+            $ucontact = $_POST["ucontact"];
             $tclient = $_POST["tclient"];
             $ucomments = $_POST["ucomments"];
             $dbirth = $_POST["d-birth"];
@@ -56,16 +57,16 @@
 
             // добовляем пользователя
             if(count($user) == 0){
-                    mysqli_query($mysqli, 
-                    "INSERT INTO `cab_users` (`id`, `fname`, `lname`, `email`, `tel`, `login, `pass`, `birthday`, `insta`, `tcontact`, `tclient`, `ucomments`,`img`, `address`) 
-                    VALUES ('$idR', '$fname', '$lname', '$email', '$tel', $login, '$pass', '$dbirth', '$inst', '$tcontact', '$tclient', '$ucomments','$img', '$address');"
-                    );
-
-                    mysqli_query($mysqli, 
-                    "INSERT INTO `cab_orders` (`id`, `onum`, `oname`, `cdate`, `fdate`, `ostatus`, `fullprice`, `itemprice`, `edate`, `glink`, `vlink`, `loclink`, `prevarchiv`, `fullarchiv`, `tsession`, `osource`, `oimg`, `currency`, `ocomments`) 
-                    VALUES ('$idR', NULL, '$oname', '$cdate', '$fdata', '$ostatus', '$fullprice', '$itemprice', '$edate', '', '', '', '', '', '$tsession', '$osource', 'oimg', 'грн', '$ocomments');"
-                    );
-        
+                mysqli_query($mysqli, 
+                "INSERT INTO `cab_users` (`id`, `fname`, `lname`, `email`, `tel`, `login`, `pass`, `birthday`, `insta`, `tcontact`, `tclient`, `ucomments`, `img`, `address`, `ucontact`) 
+                VALUES ('$idR', '$fname', '$lname', '$email', '$tel', '$login', '$pass', '$dbirth', '$inst', '$tcontact', '$tclient', '$ucomments', '$img', '$address', '$ucontact');"
+                );
+               
+                mysqli_query($mysqli, 
+                "INSERT INTO `cab_orders` (`id`, `onum`, `oname`, `cdate`, `fdate`, `ostatus`, `fullprice`, `itemprice`, `edate`, `glink`, `vlink`, `loclink`, `prevarchiv`, `fullarchiv`, `tsession`, `osource`, `oimg`, `currency`, `ocomments`) 
+                VALUES ('$idR', NULL, '$oname', '$cdate', '$fdata', '$ostatus', '$fullprice', '$itemprice', '$edate', '', '', '', '', '', '$tsession', '$osource', 'oimg', 'грн', '$ocomments');"
+                );
+    
             }else{
                 echo('такой пользователь существует');
                 

@@ -1,67 +1,39 @@
 import convertIndexToValue from "../../../../service/convertIndexToValue";
 
-let ordersHtml = (currentOrder) => {
+let ordersHtml = (currentOrder, user) => {
     let {onum, oname, cdate, edate, fdate, fullprice, currency, ostatus, itemprice, ocomments, tsession, osource} = currentOrder
-    const ostatusValue = convertIndexToValue('ostatuslist', ostatus);
-    const sourceValue = convertIndexToValue('sourceorderlist', osource);
-    const typeSessionValue = convertIndexToValue('typesessionlist', tsession);
-    const prodItemsValue = convertIndexToValue('prodItems', itemprice, true);
+    let {id, img, fname} = user;
+    // console.log(currentOrder);
+    // const ostatusValue = convertIndexToValue('ostatuslist', ostatus);
+    // const sourceValue = convertIndexToValue('sourceorderlist', osource);
+    // const typeSessionValue = convertIndexToValue('typesessionlist', tsession);
+    // const prodItemsValue = convertIndexToValue('prodItems', itemprice, true);
     return`
 <div class="order" id="order">
     <div class="order__inner">
         <div class="order__close" id="order-close"></div>
-        <div class="order__top">
-            <div class="order-title">Покупка #${onum}.</div>
-            <div class="order__name-session">[${oname}]</div>
-        </div>
-        <div class="order__info">
-            <div class="order__info-photo">
-                <img src="https://e-literaci.pl/upload/1580728826.jpg" alt="" class="order__info-img">
+            <div class="order__top">
+                <div class="order__top-wrap">
+                <div class="order-title">Покупка #${onum}.</div>
+                <div class="order__name-session">[${oname}]</div>
             </div>
-            <div class="order__info-details">
-                <div class="order__info-details-row">
-                    <div class="order__info-details-name">Продукт</div>
-                    <div class="order__info-details-value">[${oname}]</div>
-                </div>
-                <div class="order__info-details-row">
-                    <div class="order__info-details-name">Тип фотосесси</div>
-                    <div class="order__info-details-value">${typeSessionValue || ''}</div>
-                </div>
-                <div class="order__info-details-row">
-                    <div class="order__info-details-name">Источник</div>
-                    <div class="order__info-details-value">${sourceValue || ''}</div>
-                </div>
-                <div class="order__info-details-row">
-                    <div class="order__info-details-name">Дата создания</div>
-                    <div class="order__info-details-value">${cdate}</div>
-                </div>
-                <div class="order__info-details-row">
-                    <div class="order__info-details-name">Дата события</div>
-                    <div class="order__info-details-value">${edate || 'не указано'}</div>
-                </div>
-                <div class="order__info-details-row">
-                    <div class="order__info-details-name">Дата завершения</div>
-                    <div class="order__info-details-value">${fdate || 'не указано'}</div>
-                </div>
-                <div class="order__info-details-row">
-                    <div class="order__info-details-name">Статус</div>
-                    <div class="order__info-details-value">${ostatusValue || ''}</div>
-                </div>
-                <div class="order__info-details-row">
-                    <div class="order__info-details-name">Стоимость</div>
-                    <div class="order__info-details-value">${fullprice} ${currency}</div>
-                </div>
-                <div class="order__info-details-row">
-                    <div class="order__info-details-name">Товары</div>
-                    <div class="order__info-details-value">${prodItemsValue}</div>
-                </div>
-                <div class="order__info-details-row">
-                    <div class="order__info-details-name">Комментарии</div>
-                    <div class="order__info-details-value">${ocomments}</div>
-                </div>
+            <div class="order__wrap-right">
+            <div class="order-edit-btn" id="orderEditBtn">
+                ✎
+            </div>
+            <div class="order__top-user" data-uid="${id}">
+
+                <img class="order__top-userpic" src="../../../assets/image/templ-img/avatars/${img || '1595777852.png'}" alt="">
+                <div class="order__top-username">${fname}</div>
             </div>
         </div>
-        <div class="order-download">
+        </div>
+        <div class="order__info" id="orderInfoDetails">
+   
+            
+     
+        </div>
+        <div class="order-download display-none">
             <div class="order-download__title">Материалы к выдаче</div>
             <div class="order-download__table">
                 <div class="order-download__table-row">

@@ -12,6 +12,8 @@ class InsertListItems extends Component {
 
 const getListHtml = (listName) => {
     const lists = store.getState().listsSetings[listName];
+    const getTargetId = document.getElementById(listName);
+    getTargetId.innerHTML = '';
     const initial = '';
     const htmlLists = lists.reduce((accumHtml, item) => {
         const html = `<option value="${item.id}">${item.name}</option>`;
