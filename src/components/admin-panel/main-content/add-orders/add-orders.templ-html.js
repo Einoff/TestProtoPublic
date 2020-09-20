@@ -103,7 +103,7 @@ const addOrdersHtml = (prodItems) => {
             <input name="oimg" type="file" class="add-o__input">
         </label>
 
-        <button type="button" class="add-orders__btn" id="add-order-btn">Добавить</button>
+        <button type="submit" class="add-orders__btn" id="add-order-btn">Добавить</button>
     </form>
 </div>
 `

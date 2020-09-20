@@ -7,7 +7,8 @@ const convertIndexToValue = (tableName, id, isString = false) => {
         table = store.state[tableName];
         const idArray = id.split(',');
         const itemsValue = idArray.reduce((accum, id) => {
-            let itemValue = table.find(item => item.id == id).product;
+            let itemValue = table.find(item => item.id == id);
+            itemValue = itemValue ? itemValue.product : '';
             return accum + itemValue + ' | '
         }, '')
 

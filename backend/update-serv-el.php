@@ -33,7 +33,6 @@
                         echo("not update");
                     }
                 }
-
                 $mysqli -> close();
             }
         }

@@ -62,11 +62,14 @@ let ordersHtml = (currentOrder, user) => {
         </div>
         <div class="order__gallery">
             <div class="order__gallery-title">
-                <div class="order__gallery-itm">Фото</div>
-                <div class="order__gallery-itm">Видео</div>
-                <div class="order__gallery-itm">Локация</div>
+                <div class="order__gallery-itm" data-type="photo">Фото</div>
+                <div class="order__gallery-itm" data-type="video">Видео</div>
+                <div class="order__gallery-itm" data-type="location">Локация</div>
+    
             </div>
-            <div class="order__gallery-items" id="order-gallery">
+                <div class="order__gallery-items" id="order-gallery-items">
+
+                </div>
             </div>
         </div>
     </div>

@@ -35,7 +35,7 @@ const reduceOrders = (orders, isProfile) => {
         let html = `
                 <div class="order-item ${isProfile || ''}" data-id="${order.onum}">
                     <div class="order-item__photo-wrapp">
-                        <img src="../../../../assets/image/templ-img/avatars/${order.oimg}" alt="photo-session"
+                        <img src="../../../../assets/image/orders/${order.onum}/${order.oimg}" alt="photo-session"
                             class="order-item__photo">
                     </div>
                     <div class="order-item__content-block">

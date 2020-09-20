@@ -6,6 +6,7 @@ class Store {
             who: {},
             prodItems: [],
             listsSetings: [],
+            galleryData: [],
             fetchUrl: {
                 removeElUrl: `http://localhost:8080/api/backend/remove.php`,
                 updateElUrl: `http://localhost:8080/api/backend/update-serv-el.php`,
@@ -20,6 +21,9 @@ class Store {
                 addListItem: `http://localhost:8080/api/backend/addListItem.php`,
                 updateList: `http://localhost:8080/api/backend/update-list.php`,
                 updateUsersEdit: `http://localhost:8080/api/backend/updateUsersEdit.php`,
+                updateOrderEdit: `http://localhost:8080/api/backend/updateOrderEdit.php`,
+                addGalleryImg: `http://localhost:8080/api/backend/addGalleryImg.php`,
+                getGalleryData: `http://localhost:8080/api/backend/getGalleryData.php`
             }
 
 

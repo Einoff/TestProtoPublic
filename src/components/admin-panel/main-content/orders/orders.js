@@ -5,6 +5,10 @@ import { store } from '../../../../index';
 import UsersProfile from '../users-profile/users-profile';
 import OrdersEditForm from './orders-edit-form';
 import InsertListItems from '../get-lists-item/get-lists-item';
+import fetchPost from '../../../../service/fetchPost';
+import updateState from '../../../../service/updateState';
+import reRenderEl from '../../../../service/reRenderEl';
+import Gallery from '../gallery/gallery';
 
 
 class Order extends Component {
@@ -20,21 +24,22 @@ class Order extends Component {
         orderEditFormBtn();
         closeOrderModal();
         openUsers();
+        createGallery(this.currentOrders);
     }
-
 }
 
 const log = (info) => {
     console.log(info);
 }
-const getCurrentOrder = (currentOrders, user) => {    
+
+const getCurrentOrder = (currentOrders, user) => {
     const html = ordersHtml(currentOrders, user);
     return html
 }
 
 const closeOrderModal = () => {
     const order = document.getElementById('order');
-    if(order){
+    if (order) {
         order.addEventListener('click', (e) => {
             if (e.target.id == 'order-close' || e.target.id == 'order') {
                 order.remove();
@@ -43,9 +48,10 @@ const closeOrderModal = () => {
     }
 
 }
+
 const autoCloseOrderModal = () => {
     const order = document.getElementById('order');
-    if(order){
+    if (order) {
         order.remove();
     }
 }
@@ -56,10 +62,10 @@ const openUsers = () => {
 
     userRef.addEventListener('click', (e) => {
         const userId = e.currentTarget.dataset.uid;
-        if(isProfileModal){
+        if (isProfileModal) {
             autoCloseOrderModal();
             console.log('true');
-        }else{
+        } else {
             autoCloseOrderModal();
             const newUserProfile = new UsersProfile('main-content', userId);
             console.log('false');
@@ -70,47 +76,57 @@ const openUsers = () => {
 const createOrdersEditForm = (currentOrders) => {
     const orderInfoDetails = document.getElementById('orderInfoDetails');
     orderInfoDetails.innerHTML = '';
-    const newOrdersEditForm = new OrdersEditForm('orderInfoDetails', currentOrders);
+    const updateCurrentOrders = store.getState().orders.find(order => order.onum == currentOrders.onum);
+    const newOrdersEditForm = new OrdersEditForm('orderInfoDetails', updateCurrentOrders);
+    addSelectionLists(updateCurrentOrders);
+    orderEditSubmit(updateCurrentOrders);
 }
 
 const orderEditFormBtn = () => {
     const getEditFormBtn = document.getElementById('orderEditBtn');
-    const getOrderEditInputs = document.querySelectorAll('.orderEditInput');
-    const orderEditImg = document.getElementById('orderEditImg');
-    const orderEditSubmit = document.getElementById('orderEditSubmit');
-    getEditFormBtn.addEventListener('click', (e)=> {
-        const edit = getEditFormBtn.classList.contains('edit');
-        if(edit){
-            getEditFormBtn.classList.remove('edit');
-            getOrderEditInputs.forEach(input => {
-                input.disabled = true;
-                input.classList.remove('orderEditInputActiv');
-                orderEditImg.classList.add('display-none');
-                orderEditSubmit.classList.add('display-none');
-            })
 
-        }else{
-            getEditFormBtn.classList.add('edit');
-            getOrderEditInputs.forEach(input => {
-                input.disabled = false;
-                input.classList.add('orderEditInputActiv');
-                orderEditImg.classList.remove('display-none');
-                orderEditSubmit.classList.remove('display-none');
-                
-            })
-            addSelectionLists();
-        }
-        
+    getEditFormBtn.addEventListener('click', (e) => {
+        const getOrderEditInputs = document.querySelectorAll('.orderEditInput');
+        const orderEditImg = document.getElementById('orderEditImg');
+        const orderEditSubmit = document.getElementById('orderEditSubmit');
+        const orderItemProd = document.querySelector('.order__itemProd');
+        const orderItemProdEdit = document.querySelector('.order__prod-edit');
 
+        getEditFormBtn.classList.add('edit');
+        getOrderEditInputs.forEach(input => {
+            input.disabled = false;
+            input.classList.add('orderEditInputActiv');
+            orderEditImg.classList.remove('display-none');
+            orderEditSubmit.classList.remove('display-none');
+            orderItemProd.classList.add('display-none');
+            orderItemProdEdit.classList.remove('display-none');
+        })
     })
 }
-const addSelectionLists = () => {
-    const tsession = new InsertListItems('typesessionlist');
-    const osource = new InsertListItems('sourceorderlist');
-    const ostatuslist = new InsertListItems('ostatuslist');
+
+const addSelectionLists = (currentOrders) => {
+    let { ostatus, osource, tsession } = currentOrders;
+    const tsessionList = new InsertListItems('typesessionlist', tsession);
+    const osourceList = new InsertListItems('sourceorderlist', osource);
+    const ostatuslist = new InsertListItems('ostatuslist', ostatus);
 }
 
-const orderEditSubmit = () => {
+const orderEditSubmit = (updateCurrentOrders) => {
     const orderEditFormId = document.getElementById('orderEditFormId');
+    const url = store.getState().fetchUrl.updateOrderEdit;
+    orderEditFormId.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(orderEditFormId);
+        await fetchPost(url, data);
+        await updateState('orders');
+        createOrdersEditForm(updateCurrentOrders);
+    })
 }
+
+const createGallery = (currentOrders) => {
+    const onum = currentOrders.onum;
+    const newGallery = new Gallery('order-gallery-items', onum);
+}
+
+
 export default Order

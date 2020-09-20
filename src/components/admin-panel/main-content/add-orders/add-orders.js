@@ -4,6 +4,7 @@ import './add-orders.css'
 import AllUsersItem from '../add-users/all-users-item/all-users-item';
 import { store } from '../../../../index';
 import updateState from '../../../../service/updateState';
+import fetchPost from '../../../../service/fetchPost';
 
 class AddOrders extends Component {
     constructor(id) {
@@ -29,6 +30,7 @@ const BtnHandler = () => {
     const clientName = document.querySelector('.client-name');
 
     addUsersBtninOrder.addEventListener('click', (e) => {
+
         // добавить существующего пользователя из списка
         if (e.target.id == 'addUserBtn') {
             clientInput.style.display = 'flex';
@@ -82,26 +84,26 @@ const BtnHandler = () => {
 const pushNewOrderOnServer = (fetchUrl) => {
     const orderForm = document.getElementById('add-order');
     const addOrderBtn = document.getElementById('add-order-btn');
-    addOrderBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        
-        if(validator()){
-            const url = fetchUrl;
-            const formData = new FormData(orderForm);
-            await fetch(url, {method: 'POST', body: formData});
-            updateState('orders');
-        }
 
+    orderForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const url = fetchUrl;
+        const formData = new FormData(orderForm);
+        await fetchPost(url, formData);
+        updateState('orders');
     })
 }
+
+
+
 const validator = () => {
     const uName = document.getElementById('o-uname').value;
     const uEmail = document.getElementById('o-uemail').value;
     const id = document.getElementById('order-input-id').value;
-    if(!uName && !uEmail && !id){
+    if (!uName && !uEmail && !id) {
         alert('не выбран пользователь!!!')
         return false
-    }else{
+    } else {
         return true
     }
 }

@@ -1,3 +1,0 @@
-const updateList = (url, data) => {
-
-}

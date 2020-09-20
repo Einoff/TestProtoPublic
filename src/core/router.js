@@ -18,6 +18,7 @@ import DefaultLists from '../components/admin-panel/main-content/settings/defaul
 import getListsItemData from '../service/getListsItemData';
 import InsertListItems from '../components/admin-panel/main-content/get-lists-item/get-lists-item';
 import UpdateButtom from '../components/admin-panel/main-content/updateButtom/updateButtom';
+import getGalleryData from '../service/getGalleryData';
 
 
 
@@ -72,6 +73,7 @@ const adminPanelCr = async () => {
     await getOrdersFromServer();
     await getProdItems();
     await getListsItemData();
+    await getGalleryData();
     const adminPanel = await new AdminPanel('root');
     const sidebar = new Sidebar('sidebar');
     const topPanel = new TopPanel('t-panel');

@@ -81,6 +81,11 @@
     background-color: #4433ff;
  }
 
+ .add-orders__btn:active{
+     transform: scale(0.95);
+ }
+ 
+
  .add-orders__btn-wrapp{
     display: flex;
     justify-content: space-around;
