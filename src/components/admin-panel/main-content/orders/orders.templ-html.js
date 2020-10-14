@@ -21,6 +21,11 @@ let ordersHtml = (currentOrder, user) => {
             <div class="order-edit-btn" id="orderEditBtn">
                 ✎
             </div>
+
+            <div class="order-edit-btn" id="orderRemoveBtn">
+            ✘
+            </div>
+
             <div class="order__top-user" data-uid="${id}">
 
                 <img class="order__top-userpic" src="../../../assets/image/templ-img/avatars/${img || '1595777852.png'}" alt="">
@@ -67,7 +72,7 @@ let ordersHtml = (currentOrder, user) => {
                 <div class="order__gallery-itm" data-type="location">Локация</div>
     
             </div>
-                <div class="order__gallery-items" id="order-gallery-items">
+                <div class="order__gallery-items" id="order-gallery-items" data-onum="${onum}">
 
                 </div>
             </div>

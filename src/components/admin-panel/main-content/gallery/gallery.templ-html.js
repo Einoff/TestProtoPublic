@@ -4,11 +4,16 @@ const galleryHtml = (onum, store) => {
     const currentGalleryImgUrl = galleryItems.find(item => item.id === onum);
     let galleryItemsHtml = '';
 
-    if(currentGalleryImgUrl){
+    if (currentGalleryImgUrl && currentGalleryImgUrl.gallery != '') {
         galleryItemsHtml = currentGalleryImgUrl.gallery.reduce((accum, itemR) => {
             return `
                 ${accum}
-                <img src="../../../../assets/image/orders/${onum}/${itemR}" alt="gallery-img" class="gallery__item-img">
+                <div class="gallery__item-img-w">
+                    <div class="gallery__item-img-check">
+                        <input type="checkbox" name="gimgsingl[]" class="select-img-js" data-img="${itemR}">
+                    </div>
+                     <img src="../../../../assets/image/orders/${onum}/${itemR}" alt="gallery-img" class="gallery__item-img">
+                </div>
             `
         }, '')
     }
@@ -22,11 +27,11 @@ const galleryHtml = (onum, store) => {
                 <button class="gallery__addimg-btn" id="order-gallery-submit" data-onum="">Добавить</button>
             </form>
 
-            <div class="gallery__item" id="galleryWrap">
+            <form class="gallery__item" id="galleryWrap" data-onum="${onum}">
+                <button class="gallery__addimg-btn gallery__addimg-btn-remove" id="order-gallery-remove" data-onum="">Удалить выбранное</button>
                 ${galleryItemsHtml}
-            </div>
+            </form>
         </div>
     `
 }
-
 export default galleryHtml

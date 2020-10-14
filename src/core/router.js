@@ -19,6 +19,7 @@ import getListsItemData from '../service/getListsItemData';
 import InsertListItems from '../components/admin-panel/main-content/get-lists-item/get-lists-item';
 import UpdateButtom from '../components/admin-panel/main-content/updateButtom/updateButtom';
 import getGalleryData from '../service/getGalleryData';
+import ClPanel from '../components/client-panel/client-panel';
 
 
 
@@ -77,6 +78,7 @@ const adminPanelCr = async () => {
     const adminPanel = await new AdminPanel('root');
     const sidebar = new Sidebar('sidebar');
     const topPanel = new TopPanel('t-panel');
+    const newClPanel = new ClPanel('root', 1105);
     setCurrentTitle('>> Dashboard');
 }
 

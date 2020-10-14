@@ -7,14 +7,27 @@
                 $findUser = $mysqli->query("SELECT * FROM `cab_users` WHERE `authkey` = '$cookie'");
                 $user = $findUser->fetch_assoc();
                 if($user["id"] == 1595783635){
-                    // if($_POST['targetTable'] == 'prod'){
                         $targetTable = $_POST['targetTable'];
                         $id = $_POST['id'];
-                        // echo('prod');
-                        $mysqli->query("DELETE FROM $targetTable WHERE id='$id'");
-                    }
+                        $idName = 'id';
+                        $_POST['idname'] ? $idName = $_POST['idname'] : $idName = 'id';
+                        $mysqli->query("DELETE FROM $targetTable WHERE $idName='$id'");
+                       
+                        if($_POST['delFolder']){
+                            $urlrmoveDir = "../src/assets/image/orders/".$id;
+                            $dirList = scandir($urlrmoveDir);
+                            foreach($dirList as $item){
+                                if ($item != "." && $item != ".."){
+                                    unlink($urlrmoveDir . "/". $item);
+                                }
+                            }
+                            rmdir($urlrmoveDir);
+                        }
+                        echo('ok');
+                        
+                 }
                     
-                // }
+                
 
                 $mysqli -> close();
             }

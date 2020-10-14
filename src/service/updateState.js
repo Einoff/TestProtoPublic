@@ -1,3 +1,4 @@
+import getGalleryData from "./getGalleryData";
 import getListsItemData from "./getListsItemData";
 
 const { default: getOrdersFromServer } = require("./getOrders");
@@ -17,6 +18,9 @@ const updateState = async (targetUpdate) => {
             break;
         case 'list':
             await getListsItemData();
+            break;
+        case 'gallery':
+            await getGalleryData();
             break;
     }
 }

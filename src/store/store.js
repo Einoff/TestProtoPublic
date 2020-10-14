@@ -23,7 +23,8 @@ class Store {
                 updateUsersEdit: `http://localhost:8080/api/backend/updateUsersEdit.php`,
                 updateOrderEdit: `http://localhost:8080/api/backend/updateOrderEdit.php`,
                 addGalleryImg: `http://localhost:8080/api/backend/addGalleryImg.php`,
-                getGalleryData: `http://localhost:8080/api/backend/getGalleryData.php`
+                getGalleryData: `http://localhost:8080/api/backend/getGalleryData.php`,
+                removeImgItem: `http://localhost:8080/api/backend/removeImgItem.php`
             }
 
 
@@ -33,7 +34,7 @@ class Store {
         return this.state
     }
     getListsItem = () => {
-        
+
     }
 
 }

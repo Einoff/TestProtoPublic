@@ -2,6 +2,9 @@ const { default: Component } = require("../../../../core/Component");
 import './list-of-orders.css'
 import { store } from '../../../../index'
 import Order from '../orders/orders';
+import removeElData from '../../../../service/removeElData';
+import updateState from '../../../../service/updateState';
+import reRenderEl from '../../../../service/reRenderEl';
 
 class ListOfOrder extends Component {
     constructor(id, usersId, isProfile) {
@@ -34,6 +37,7 @@ const reduceOrders = (orders, isProfile) => {
     let orderItemHtml = orders.reduce((accumHtml, order) => {
         let html = `
                 <div class="order-item ${isProfile || ''}" data-id="${order.onum}">
+                    <div class="order-item__remove" id="orderItemRemove">✘</div>
                     <div class="order-item__photo-wrapp">
                         <img src="../../../../assets/image/orders/${order.onum}/${order.oimg}" alt="photo-session"
                             class="order-item__photo">
@@ -55,12 +59,22 @@ const reduceOrders = (orders, isProfile) => {
 const ordersItemEventHandler = (isProfile) => {
     const orderItems = document.querySelectorAll(`.${isProfile || 'order-item'}`);
     orderItems.forEach(item => {
-        item.addEventListener('click', () => {
-            openOrder(item);
+        item.addEventListener('click', async (e) => {
+            if (e.target.id == 'orderItemRemove') {
+                const id = item.dataset.id;
+                await removeElData(id, 'cab_orders', 'onum', true);
+                await removeElData(id, 'gallery');
+                await updateState('orders');
+                reRenderEl('main-content', ListOfOrder);
+            } else {
+                openOrder(item);
+            }
+
         })
     })
 
 }
+
 const openOrder = (item) => {
     const itemId = item.dataset.id;
     const orderDetails = new Order('main-content', itemId);

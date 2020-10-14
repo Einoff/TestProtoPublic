@@ -9,7 +9,10 @@ const getGalleryData = async() => {
         .then(response => response.json())
         .then(data => {
             data.forEach(item => {
-                item.gallery = item.gallery.replace(/^,*/,"").replace(/,*$/,"").split(',');
+                if(item.gallery != ''){
+                    item.gallery = item.gallery.replace(/^,*/,"").replace(/,*$/,"").split(',');
+   
+                }
             })
             store.getState().galleryData = data;
         })

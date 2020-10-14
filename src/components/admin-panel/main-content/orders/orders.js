@@ -1,6 +1,6 @@
 const { default: Component } = require("../../../../core/Component");
 import './orders.css'
-import ordersHtml from './orders.templ.-html';
+import ordersHtml from './orders.templ-html';
 import { store } from '../../../../index';
 import UsersProfile from '../users-profile/users-profile';
 import OrdersEditForm from './orders-edit-form';
@@ -9,6 +9,8 @@ import fetchPost from '../../../../service/fetchPost';
 import updateState from '../../../../service/updateState';
 import reRenderEl from '../../../../service/reRenderEl';
 import Gallery from '../gallery/gallery';
+import removeElData from '../../../../service/removeElData';
+import ListOfOrder from '../list-of-orders/list-of-orders';
 
 
 class Order extends Component {
@@ -25,6 +27,7 @@ class Order extends Component {
         closeOrderModal();
         openUsers();
         createGallery(this.currentOrders);
+        removeOrder(this.currentOrders);
     }
 }
 
@@ -126,6 +129,51 @@ const orderEditSubmit = (updateCurrentOrders) => {
 const createGallery = (currentOrders) => {
     const onum = currentOrders.onum;
     const newGallery = new Gallery('order-gallery-items', onum);
+}
+
+const removeOrder = (currentOrders) => {
+    const removeOrderBtn = document.getElementById('orderRemoveBtn');
+    removeOrderBtn.addEventListener('click', e => {
+        removeOrderAlert(currentOrders);
+    })
+}
+
+const removeOrderAlert = (currentOrders) => {
+    const targetEl = document.getElementById('admin-panel');
+    const removeOrderAlertHtml  = `
+        <div class="alert-modal">
+            <div class="alert-modal-inner">
+                <div class="alert-modal-text">Удалить заказ безвозвратно?</div>
+                <div class="alert-modal-btn-wrap">
+                    <div class="alert-modal-btn" id="alert-modal-btn-true">Да</div>
+                    <div class="alert-modal-btn" id="alert-modal-btn-false">Нет</div>
+                </div>
+            </div>
+        </div>
+    `
+    targetEl.insertAdjacentHTML('afterbegin', removeOrderAlertHtml);
+    
+    removeOrderAlertEventBtn(currentOrders);
+    
+}
+
+const removeOrderAlertEventBtn = (currentOrders) => {
+    const alertModal = document.querySelector('.alert-modal');
+    const onum = currentOrders.onum;
+    alertModal.addEventListener('click', async(e) => {
+        if(e.target.id === 'alert-modal-btn-true'){
+            const order = document.getElementById('order');
+            await removeElData(onum, 'cab_orders', 'onum', true);
+            await removeElData(onum, 'gallery');
+            await updateState('orders');
+            alertModal.remove();
+            order.remove();
+            reRenderEl('main-content', ListOfOrder);
+
+        }else if(e.target.id === 'alert-modal-btn-false'){
+            alertModal.remove();
+        }
+    })
 }
 
 

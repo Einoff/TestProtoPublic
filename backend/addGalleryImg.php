@@ -24,20 +24,25 @@
                     $gimgData = "";
 
                     for($i = 0; $i < $countFiles; $i++){
+
+                        // get images type
                         $photoType = explode("/", $fileImg["type"][$i])[1];
+
+                        // get images url from
                         $photoUrlFrom = $fileImg["tmp_name"][$i];
+
+                        // make url to folder
                         $url = "../src/assets/image/orders/". $onum . "/";
                         $id += $i;
+
+                        // make url to new img file
                         $photoUrlTo = $url . $onum . "_" . $id . "." . $photoType;
                         $moveFileError = move_uploaded_file ( $photoUrlFrom , $photoUrlTo );
-                        print_r($moveFileError);
-                        // if($countFiles - 1 != $i){
-                            $gimgData = $gimgData . $onum . "_" . $id . "." . $photoType . ",";
-                        // }else{
-                            // $gimgData = $gimgData . $onum . "_" . $id . "." . $photoType;
-                        // }
+
+                        $gimgData = $gimgData . $onum . "_" . $id . "." . $photoType . ",";
+                       
+                        
                     }
-                    
                     
                     $resultGallery = mysqli_query($mysqli, "SELECT * FROM `gallery` WHERE `id` = '$onum'");
                     $resultGallery = mysqli_fetch_assoc($resultGallery);
@@ -46,6 +51,7 @@
 
                         $gimgData = $resultGallery["gallery"] . $gimgData;
                         mysqli_query($mysqli, "UPDATE `gallery` SET gallery='$gimgData' WHERE id='$onum'");
+                        print_r($gimgData);
 
                     }else{
                         mysqli_query($mysqli, 
@@ -53,9 +59,7 @@
                             VALUES ('$onum', '$gimgData');"
                         );
                     }
-
                   
-                    print_r($resultGallery["gallery"]);
                 }
             }  
             
