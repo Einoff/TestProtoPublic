@@ -95,18 +95,37 @@
 
                 $onum = mysqli_fetch_array($lastOrder, MYSQLI_ASSOC)["onum"];
                 $url = "../src/assets/image/orders/". $onum . "/";
+                $urlprev = "../src/assets/image/orders/". $onum . "p" . "/";
                 mkdir($url, 0600, true);
+                mkdir($urlprev, 0600, true);
 
                 if(!empty($_FILES["oimg"]["size"])){
                     $photoUrlFrom = $_FILES["oimg"]["tmp_name"];
                     $photoType = explode("/", $_FILES["oimg"]["type"]);
                     $photoType = $photoType[1];
                     $oimg = $onum . "(title)" . "." . $photoType;
-                    print_r($oimg);
                 
                     $photoUrlTo = $url . $oimg;
-                
+                    $photoUrlToPrev = $urlprev . $oimg;
+                    
+                    
+
+                    //creat preview images
+                    print_r($photoType);
+                    $quality = 60;
+                    switch($photoType){
+                        case 'jpeg': $source = imagecreatefromjpeg($photoUrlFrom); break; //Создаём изображения по
+                        case 'png': $source = imagecreatefrompng($photoUrlFrom); break;  //образцу загруженного  
+                        case 'gif': $source = imagecreatefromgif($photoUrlFrom); break; //исходя из его формата
+                        default: return false;
+                    }
+
+                    imagejpeg($source, $photoUrlToPrev, $quality); //Сохраняем созданное изображение по указанному пути в формате jpg
+                    imagedestroy($source);//Чистим память
+
+                    //original images
                     $moveStatus = move_uploaded_file ( $photoUrlFrom , $photoUrlTo );
+
                 }else{
                     $oimg = "1595777852.png";
                 }

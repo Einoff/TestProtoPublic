@@ -7,11 +7,12 @@
     z-index: 200;
     overflow: auto;
     background-color: #fff;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .cp-header {
     position: relative;
-    width: 100%;
+        width: 100%;
     height: 100vh;
     overflow: hidden;
     background-repeat: no-repeat;
@@ -29,14 +30,14 @@
     right: 0;
     background-color: rgba(0, 0, 0, 0.1);
     /* box-shadow: inset 0px 0px 83px 0px rgba(0,0,0,0.75); */
-    box-shadow: inset 0px 9px 128px 0px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 9px 128px 0px rgba(0, 0, 0, 0.75);
 }
 
 .cp-header__title {
     position: relative;
     font-size: 34px;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 600;
     padding: 25px 0 10px 25px;
     z-index: 201;
 }
@@ -104,7 +105,7 @@
     cursor: pointer;
 }
 
-.client-panel__gallery-item:hover .client-panel__gallery-item-download{
+.client-panel__gallery-item:hover .client-panel__gallery-item-download {
     display: block;
 }
 
@@ -117,10 +118,12 @@
 }
 
 /* .client-panel__gallery-item-img:hover{ */
-    /* transform: scale(1.05); */
+
+/* transform: scale(1.05); */
+
 /* } */
 
-.client-panel__gallery-item-download{
+.client-panel__gallery-item-download {
     display: none;
     position: absolute;
     z-index: 205;
@@ -132,16 +135,67 @@
     transition: all 0.3s ease-in-out;
 }
 
-.client-panel__gallery-item-download:hover{
+.client-panel__gallery-item-download:hover {
     transform: scale(1.1);
 }
-.client-panel__gallery-item-download:active{
+
+.client-panel__gallery-item-download:active {
     transform: scale(0.9);
 }
 
-.w2{
+.cp-close-btn{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 210;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: #fff;
+    cursor: pointer;
+}
+.cp-close-btn:hover{
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.342);
+}
+
+.tooltip-close::after{
+    content: "Закрыть";
+    position: absolute;
+    top: 47px;
+    left: -139px;
+    background-color:rgba(0,0,0, 0.7);
+    border-radius: 10px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 137px; 
+    height: 41px;
+    border: 1px solid #fff;
+    box-shadow: -1px 1px 10px 0px rgba(0,0,0, 0.3);
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s;
+}
+
+.tooltip-close:hover::after{
+    opacity: 1;
+}
+
+
+.w2 {
     grid-column: span 2;
 }
-.w4{
+
+.w3 {
+    grid-column: span 3;
+}
+
+.w4 {
     grid-column: span 4;
 }

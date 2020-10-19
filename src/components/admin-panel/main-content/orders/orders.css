@@ -317,3 +317,59 @@ margin-right: 20px;
 .alert-modal-btn:active{
     transform: scale(0.95);
 }
+
+.preview-btn{
+    width: auto;
+    padding: 0 10px;
+    font-size: 15px;
+}
+
+.tooltip-remove::after{
+    content: "Удалить";
+    position: absolute;
+    top: 47px;
+    left: -71px;
+    background-color:rgba(0,0,0, 0.7);
+    border-radius: 10px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 137px;
+    height: 41px;
+    border: 1px solid #fff;
+    box-shadow: -1px 1px 10px 0px rgba(0,0,0, 0.3);
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0,5s;
+}
+
+.tooltip-remove:hover::after{
+    opacity: 1;
+}
+
+.tooltip-edit::after{
+    content: "Редактировать";
+    position: absolute;
+    top: 47px;
+    left: -71px;
+    background-color:rgba(0,0,0, 0.7);
+    border-radius: 10px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 137px;
+    height: 41px;
+    border: 1px solid #fff;
+    box-shadow: -1px 1px 10px 0px rgba(0,0,0, 0.3);
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0,5s;
+}
+
+.tooltip-edit:hover::after{
+    opacity: 1;
+}

@@ -78,7 +78,6 @@ const adminPanelCr = async () => {
     const adminPanel = await new AdminPanel('root');
     const sidebar = new Sidebar('sidebar');
     const topPanel = new TopPanel('t-panel');
-    const newClPanel = new ClPanel('root', 1105);
     setCurrentTitle('>> Dashboard');
 }
 

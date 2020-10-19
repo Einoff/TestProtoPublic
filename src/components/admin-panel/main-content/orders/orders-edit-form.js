@@ -35,7 +35,7 @@ const html = (currentOrders) => {
 
         <form class="order__info-wrap" id="orderEditFormId" data-orderID="${onum}">
             <div class="order__info-photo">
-                <img src="../../../../assets/image/orders/${onum}/${oimg}" alt="" class="order__info-img">
+                <img src="../../../../assets/image/orders/${onum}p/${oimg}" alt="" class="order__info-img">
             </div>
             <div class="order__info-details">
                 <div class="order__info-details-row">

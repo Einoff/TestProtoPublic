@@ -11,6 +11,7 @@ import reRenderEl from '../../../../service/reRenderEl';
 import Gallery from '../gallery/gallery';
 import removeElData from '../../../../service/removeElData';
 import ListOfOrder from '../list-of-orders/list-of-orders';
+import ClPanel from '../../../client-panel/client-panel';
 
 
 class Order extends Component {
@@ -28,6 +29,7 @@ class Order extends Component {
         openUsers();
         createGallery(this.currentOrders);
         removeOrder(this.currentOrders);
+        clientPanelPreview(this.currentOrders.onum);
     }
 }
 
@@ -176,5 +178,10 @@ const removeOrderAlertEventBtn = (currentOrders) => {
     })
 }
 
-
+const clientPanelPreview = (onum) => {
+    const orderPrevBtn = document.getElementById('orderPrevBtn');
+    orderPrevBtn.addEventListener('click', (e) => {
+        const newCPanel = new ClPanel('root', onum);
+    })
+}
 export default Order

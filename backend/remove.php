@@ -14,6 +14,8 @@
                         $mysqli->query("DELETE FROM $targetTable WHERE $idName='$id'");
                        
                         if($_POST['delFolder']){
+
+                            //удалить оригинальную папку
                             $urlrmoveDir = "../src/assets/image/orders/".$id;
                             $dirList = scandir($urlrmoveDir);
                             foreach($dirList as $item){
@@ -22,6 +24,16 @@
                                 }
                             }
                             rmdir($urlrmoveDir);
+
+                            //удалить папку превью
+                            $urlrmoveDirPrev = "../src/assets/image/orders/".$id."p";
+                            $dirList = scandir($urlrmoveDirPrev);
+                            foreach($dirList as $item){
+                                if ($item != "." && $item != ".."){
+                                    unlink($urlrmoveDirPrev . "/". $item);
+                                }
+                            }
+                            rmdir($urlrmoveDirPrev);
                         }
                         echo('ok');
                         

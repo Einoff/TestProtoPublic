@@ -18,11 +18,14 @@ let ordersHtml = (currentOrder, user) => {
                 <div class="order__name-session">[${oname}]</div>
             </div>
             <div class="order__wrap-right">
-            <div class="order-edit-btn" id="orderEditBtn">
+            <div class="order-edit-btn preview-btn" id="orderPrevBtn">
+                Страница клиента (preview)
+            </div>
+            <div class="order-edit-btn tooltip-edit" id="orderEditBtn">
                 ✎
             </div>
 
-            <div class="order-edit-btn" id="orderRemoveBtn">
+            <div class="order-edit-btn tooltip-remove" id="orderRemoveBtn">
             ✘
             </div>
 

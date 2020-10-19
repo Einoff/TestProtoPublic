@@ -17,8 +17,6 @@
 
                 $countFiles = count($_FILES["gimg"]["name"]);
                 
-
-                
                 if($countFiles > 0){
                     $id = time();
                     $gimgData = "";
@@ -33,6 +31,7 @@
 
                         // make url to folder
                         $url = "../src/assets/image/orders/". $onum . "/";
+                        $urlPrev = "../src/assets/image/orders/". $onum . '_p' . "/";
                         $id += $i;
 
                         // make url to new img file

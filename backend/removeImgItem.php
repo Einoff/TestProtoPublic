@@ -27,7 +27,22 @@
                             // unlink($urlrmoveDir . "/". $item);
                         // }
                     }
+                    
+                    // $urlrmoveDirPrev = "../src/assets/image/orders/".$id. "p";
+                    // $dirListPrev = scandir($urlrmoveDirPrev);
+                    // $gimg = explode(',', $gimg);
 
+                    // foreach($dirListPrev as $item){
+                        
+                    //     if(!in_array($item, $gimg)){
+                    //         unlink($urlrmoveDirPrev . "/". $item);
+                    //     }
+                    //     // if ($item != "." && $item != ".."){
+                    //         // unlink($urlrmoveDir . "/". $item);
+                    //     // }
+                    // }
+
+                    
                     // if($update){
                     //     echo("update");
                     // }else{
