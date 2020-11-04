@@ -10,7 +10,7 @@ return `
     </div>
     <div class="top-panel__profile">
         <div class="top-panel__profile-user">
-            <img class="top-panel__userpic-img" src="../../../assets/image/templ-img/avatars/${img || '1595777852.png'}"
+            <img class="top-panel__userpic-img" src="./assets/image/templ-img/avatars/${img || '1595777852.png'}"
                 alt="userpic">
 
             <div class="top-panel__profile-name" id="pf-name">${fname}</div>

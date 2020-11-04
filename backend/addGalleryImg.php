@@ -1,5 +1,5 @@
 <?php 
-    
+    include "imagesResize.php";
     if(!empty($_POST)){
 
         if(!empty($_COOKIE["authkey"])){
@@ -31,15 +31,18 @@
 
                         // make url to folder
                         $url = "../src/assets/image/orders/". $onum . "/";
-                        $urlPrev = "../src/assets/image/orders/". $onum . '_p' . "/";
+                        $urlPrev = "../src/assets/image/orders/". $onum . 'p' . "/";
                         $id += $i;
 
                         // make url to new img file
                         $photoUrlTo = $url . $onum . "_" . $id . "." . $photoType;
-                        $moveFileError = move_uploaded_file ( $photoUrlFrom , $photoUrlTo );
+                        $photoUrlPrevTo = $urlPrev . $onum . "_" . $id . "." . $photoType;
 
+                        // resize images for preview folder
+                        reSizeImage($photoUrlFrom, $photoUrlPrevTo);
+
+                        $moveFileError = move_uploaded_file ( $photoUrlFrom , $photoUrlTo );
                         $gimgData = $gimgData . $onum . "_" . $id . "." . $photoType . ",";
-                       
                         
                     }
                     

@@ -111,7 +111,6 @@
                     
 
                     //creat preview images
-                    print_r($photoType);
                     $quality = 60;
                     switch($photoType){
                         case 'jpeg': $source = imagecreatefromjpeg($photoUrlFrom); break; //Создаём изображения по

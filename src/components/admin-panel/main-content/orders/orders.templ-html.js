@@ -31,7 +31,7 @@ let ordersHtml = (currentOrder, user) => {
 
             <div class="order__top-user" data-uid="${id}">
 
-                <img class="order__top-userpic" src="../../../assets/image/templ-img/avatars/${img || '1595777852.png'}" alt="">
+                <img class="order__top-userpic" src="./assets/image/templ-img/avatars/${img || '1595777852.png'}" alt="">
                 <div class="order__top-username">${fname}</div>
             </div>
         </div>

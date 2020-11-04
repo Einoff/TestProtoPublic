@@ -30,6 +30,7 @@ class Order extends Component {
         createGallery(this.currentOrders);
         removeOrder(this.currentOrders);
         clientPanelPreview(this.currentOrders.onum);
+        // orderEditCancelHandler(this.currentOrders);
     }
 }
 
@@ -85,6 +86,7 @@ const createOrdersEditForm = (currentOrders) => {
     const newOrdersEditForm = new OrdersEditForm('orderInfoDetails', updateCurrentOrders);
     addSelectionLists(updateCurrentOrders);
     orderEditSubmit(updateCurrentOrders);
+    orderEditCancelHandler(currentOrders);
 }
 
 const orderEditFormBtn = () => {
@@ -94,18 +96,23 @@ const orderEditFormBtn = () => {
         const getOrderEditInputs = document.querySelectorAll('.orderEditInput');
         const orderEditImg = document.getElementById('orderEditImg');
         const orderEditSubmit = document.getElementById('orderEditSubmit');
+        const orderEditCancel = document.getElementById('orderEditCancel');
         const orderItemProd = document.querySelector('.order__itemProd');
         const orderItemProdEdit = document.querySelector('.order__prod-edit');
+        const orderArchivInput = document.getElementById('orderArchivInput');
 
         getEditFormBtn.classList.add('edit');
         getOrderEditInputs.forEach(input => {
             input.disabled = false;
             input.classList.add('orderEditInputActiv');
-            orderEditImg.classList.remove('display-none');
-            orderEditSubmit.classList.remove('display-none');
-            orderItemProd.classList.add('display-none');
-            orderItemProdEdit.classList.remove('display-none');
+
         })
+        orderEditImg.classList.remove('display-none');
+        orderEditSubmit.classList.remove('display-none');
+        orderEditCancel.classList.remove('display-none');
+        orderItemProd.classList.add('display-none');
+        orderItemProdEdit.classList.remove('display-none');
+        // orderArchivInput.classList.remove('display-none');
     })
 }
 
@@ -125,6 +132,13 @@ const orderEditSubmit = (updateCurrentOrders) => {
         await fetchPost(url, data);
         await updateState('orders');
         createOrdersEditForm(updateCurrentOrders);
+    })
+}
+
+const orderEditCancelHandler = (currentOrders) => {
+    const orderEditCancel = document.getElementById('orderEditCancel');
+    orderEditCancel.addEventListener('click', e => {
+        createOrdersEditForm(currentOrders);
     })
 }
 

@@ -12,7 +12,7 @@ const galleryHtml = (onum, store) => {
                     <div class="gallery__item-img-check">
                         <input type="checkbox" name="gimgsingl[]" class="select-img-js" data-img="${itemR}">
                     </div>
-                     <img src="../../../../assets/image/orders/${onum}/${itemR}" alt="gallery-img" class="gallery__item-img">
+                     <img src="./assets/image/orders/${onum}p/${itemR}" alt="gallery-img" class="gallery__item-img">
                 </div>
             `
         }, '')

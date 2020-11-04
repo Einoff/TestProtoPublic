@@ -46,7 +46,7 @@ const removeSelectImgFromGallery = () => {
                 return accum + imgName
             }, '')
             .replace(/,$/, '');
-
+        
         const url = store.getState().fetchUrl.removeImgItem;
         const formData = new FormData();
         formData.append('gimg', imgNames);

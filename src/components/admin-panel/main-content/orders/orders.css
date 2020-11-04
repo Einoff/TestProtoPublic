@@ -224,8 +224,8 @@ margin-right: 20px;
  }
 
  .order-edit-submit{
-     display: block;
-     margin: 0 auto;
+     /* display: block; */
+     margin-left: 15px;
      margin-top: 20px;
      margin-bottom: 20px;
      border: none;
@@ -372,4 +372,10 @@ margin-right: 20px;
 
 .tooltip-edit:hover::after{
     opacity: 1;
+}
+
+.order-edit-buttom-wrapp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

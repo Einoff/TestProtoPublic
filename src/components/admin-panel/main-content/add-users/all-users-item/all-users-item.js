@@ -37,7 +37,7 @@ const allUsersItemHtml = (users) => {
         return `
         <div class="all-users-item" data-id="${user.id}">
             <div class="all-users-item__photo-wrapp">
-                <img src="../../../../../assets/image/templ-img/avatars/${user.img}" alt="avatar" class="all-users-item__photo">
+                <img src="./assets/image/templ-img/avatars/${user.img}" alt="avatar" class="all-users-item__photo">
             </div>
             <div class="all-users-item__name search-js">${user.fname} ${user.lname}</div>
             <div class="all-users-item__email">${user.email}</div>

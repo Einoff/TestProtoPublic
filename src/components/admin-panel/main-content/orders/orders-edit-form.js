@@ -10,7 +10,7 @@ class OrdersEditForm extends Component {
 }
 
 const html = (currentOrders) => {
-    let { onum, oname, cdate, edate, fdate, fullprice, currency, ostatus, itemprice, ocomments, tsession, osource, oimg } = currentOrders;
+    let { fullarchiv, onum, oname, cdate, edate, fdate, fullprice, currency, ostatus, itemprice, ocomments, tsession, osource, oimg } = currentOrders;
 
     const arrayItemPrice = itemprice.split(',');
 
@@ -35,7 +35,7 @@ const html = (currentOrders) => {
 
         <form class="order__info-wrap" id="orderEditFormId" data-orderID="${onum}">
             <div class="order__info-photo">
-                <img src="../../../../assets/image/orders/${onum}p/${oimg}" alt="" class="order__info-img">
+                <img src="./assets/image/orders/${onum}p/${oimg}" alt="" class="order__info-img">
             </div>
             <div class="order__info-details">
                 <div class="order__info-details-row">
@@ -125,7 +125,17 @@ const html = (currentOrders) => {
                         <input type="file" name="oimg">
                     </div>
                 </div>
-                <button class="order-edit-submit display-none" id="orderEditSubmit">Изменить</button>
+
+                <div class="order__info-details-row" id="orderArchivInput">
+                    <div class="order__info-details-name">Ссылка на архив:</div>
+                    <div class="order__info-details-value">
+                        <input type="text" name="fullarchiv" value="${fullarchiv}" class="orderEditInput" disabled>
+                    </div>
+                </div>
+                <div class="order-edit-buttom-wrapp">
+                    <button class="order-edit-submit display-none" id="orderEditSubmit">Изменить</button>
+                    <div class="order-edit-submit display-none" id="orderEditCancel">Отмена</div>
+                </div>
             </div>
 
         </form>

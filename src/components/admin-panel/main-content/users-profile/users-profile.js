@@ -34,7 +34,7 @@ let usersProfilehtml = (usersId, users) => {
             </div>
                 <div class="users-profile__top">
                     <div class="users-profile__p-photo">
-                        <img src="../../../../assets/image/templ-img/avatars/${user.img}" alt="">
+                        <img src="./assets/image/templ-img/avatars/${user.img}" alt="">
                     </div>
                     <div class="users-profile__p-info">
                         <div class="users-profile__name">${user.fname} ${user.lname}</div>
