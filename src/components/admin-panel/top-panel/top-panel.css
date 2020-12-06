@@ -1,10 +1,10 @@
 .top-panel { 
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    min-height: 70px;
+    justify-content: space-between;
+    height: 65px;
     align-items: center;
-    padding: 15px 40px;
+    padding: 0 40px;
     /* background-color: rgba(255, 255, 255, 0.8); */
     box-shadow: -8px 8px 14px 0 rgba(25,42,70,.11);
 }
@@ -22,3 +22,20 @@
     position: absolute;
  }
 .top-panel__profile-nav-link { }
+.top-panel__profile-user{
+    display: flex;
+    align-items: center;
+}
+
+.top-panel__userpic-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.top-panel__title{
+    font-size: 17px;
+    color: #342e49;
+}

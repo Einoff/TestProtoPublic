@@ -1,0 +1,80 @@
+
+.settings-item{
+
+    background-color: #fff;
+    margin: 6px auto;
+    padding: 15px 30px;
+    width: 99%;
+    /* border-radius: 10px; */
+    box-shadow: -5px 5px 7px 0 rgba(0, 0, 0, 0.1);
+}
+.settings-product{
+    position: relative;
+    background-color: #fff;
+    padding: 15px 30px;
+    width: 49%;
+    /* border-radius: 10px; */
+    box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.1);
+}
+
+.settings-add-input {
+    outline: none;
+    border: 1px solid #dbdee5ea;
+    margin: 5px 0 15px;
+    padding: 12px 12px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.add-product-btn{
+    min-width: 230px;
+    border-radius: 5px;
+    background-color: #7366ff;
+    border: none;
+    padding: 15px 15px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    width: 30%;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+.add-product-btn:active{
+    transform: scale(0.9);
+}
+
+.add-check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-color: #8cff93;
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+
+}
+
+.add__wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-item__wrapp{
+    display: flex;
+    justify-content: space-between;
+}
+
+.settings-title{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.prod-set{
+    /* display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start; */
+}

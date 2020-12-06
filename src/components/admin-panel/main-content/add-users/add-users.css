@@ -9,12 +9,13 @@
    
 }
 .add-users__form {
+    position: relative;
     overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #fff;
-    margin: 0 auto;
+    margin: 30px auto;
     padding: 15px 30px;
     max-width: 600px;
     width: 100%;
@@ -73,9 +74,18 @@
     
     background-color: #4433ff;
  }
+ .add-users__btn:active{
+     transform: scale(0.9);
+ }
 
  .t-area__file{
      margin-right: 20px;
      margin-bottom: 25px;
  }
 
+ .add-users__confirm{
+     position: absolute;
+     bottom: 80px;
+     font-size: 15px;
+     color: #354df3;
+ }

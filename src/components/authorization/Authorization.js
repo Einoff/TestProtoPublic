@@ -2,6 +2,7 @@ import Component from '../../core/Component'
 import './authorization.css'
 import authorization_html from './authorization.templ-html';
 import { routerInit } from '../..';
+import getAuthUserData from '../../service/getAuthUserData';
 
 class Authorization extends Component {
     constructor(id) {

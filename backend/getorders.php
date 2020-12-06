@@ -7,11 +7,12 @@
             if($user["id"] == 1595783635){
                 $result = $mysqli->query("SELECT * FROM `cab_orders`");
                 $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                $orders = json_encode($orders); 
-                echo($orders);
+                if(count($orders) > 0){
+                    $orders = json_encode($orders); 
+                    echo($orders);
+                }
             }
             $mysqli -> close();
-           
         }
         exit();
 ?>

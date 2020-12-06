@@ -81,6 +81,11 @@
     background-color: #4433ff;
  }
 
+ .add-orders__btn:active{
+     transform: scale(0.95);
+ }
+ 
+
  .add-orders__btn-wrapp{
     display: flex;
     justify-content: space-around;
@@ -94,7 +99,7 @@
     align-items: center;
     background-color: #fff;
     margin: 0 auto;
-    padding: 15px 30px;
+    padding: 0 30px;
     width: 97%;
     border-radius: 10px;
     box-shadow: -5px 5px 7px 0 rgba(0, 0, 0, 0.1);

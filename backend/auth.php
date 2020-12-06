@@ -1,11 +1,8 @@
 <?php 
-    
-
-
     if(!empty($_POST)){
 
-        if(empty($_POST["email"])){
-            exit('empty email');
+        if(empty($_POST["login"])){
+            exit('empty login');
         }
         if(empty($_POST["pass"])){
             exit('empty pass');
@@ -14,14 +11,14 @@
 
 
         $mysqli = new mysqli("127.0.0.1", "root", "root", "photo_bd");
-        $email = $_POST["email"];
+        $login = $_POST["login"];
         $pass = $_POST["pass"];
 
    
 
 
         //поиск авторизуемого поьзователя в базе данных
-        $result = $mysqli->query("SELECT * FROM `cab_users` WHERE `email` = '$email' AND `pass` = '$pass' ");
+        $result = $mysqli->query("SELECT * FROM `cab_users` WHERE `login` = '$login' AND `pass` = '$pass' ");
         $user = $result->fetch_assoc();
         // $user = json_encode($user);
         // print_r($user['id']);    

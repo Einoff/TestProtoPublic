@@ -1,30 +1,17 @@
 const { default: Component } = require("../../../core/Component");
 import './top-panel.css'
+import { store } from '../../../index';
+import topPanelHtml from './top-panel.templ-html';
 
 class TopPanel extends Component{
     constructor(id){
         super(id)
-        this.insertHTML(html);
+        this.state = store.getState()
+        this.insertHTML(topPanelHtml(this.state));
+        // topPanelHtml(this.state);
     }
 
-       
 }
-
-const html =`
-    <div class="top-panel">
-        <div class="top-panel__profile">
-            <div class="top-panel__profile-name" id="pf-name">Pasha</div>
-            <div class="top-panel__profile-status" id="pf-status">Admin</div>
-            <ul class="top-panel__profile-nav">
-                <li><a href="#" class="top-panel__profile-nav-link">Element 1</a></li>
-                <li><a href="#" class="top-panel__profile-nav-link">Element 2</a></li>
-                <li><a href="#" class="top-panel__profile-nav-link">Element 3</a></li>
-                <li><a href="#" class="top-panel__profile-nav-link">Element 4</a></li>
-            </ul>
-        </div>
-    </div>
-`
-   
 
 
 export default TopPanel

@@ -1,19 +1,23 @@
 const { default: Component } = require("../../../../core/Component");
 const { default: addOrdersHtml } = require("./add-orders.templ-html");
 import './add-orders.css'
-import AllUsers from '../all-users/all-users';
-import AllUsersItem from '../all-users/all-users-item/all-users-item';
+import AllUsersItem from '../add-users/all-users-item/all-users-item';
+import { store } from '../../../../index';
+import updateState from '../../../../service/updateState';
+import fetchPost from '../../../../service/fetchPost';
 
 class AddOrders extends Component {
     constructor(id) {
         super(id);
-        this.insertHTML(html);
+        this.prodItems = store.getState().prodItems;
+        this.fetchUrl = store.getState().fetchUrl.addOrder;
+        this.insertHTML(addOrdersHtml(this.prodItems));
         BtnHandler();
-        pushNewOrderOnServer();
+        pushNewOrderOnServer(this.fetchUrl);
     }
 }
 
-let html = addOrdersHtml();
+// let html = addOrdersHtml();
 
 const BtnHandler = () => {
     const addUsersBtninOrder = document.getElementById('btn-wrapp');
@@ -26,6 +30,7 @@ const BtnHandler = () => {
     const clientName = document.querySelector('.client-name');
 
     addUsersBtninOrder.addEventListener('click', (e) => {
+
         // добавить существующего пользователя из списка
         if (e.target.id == 'addUserBtn') {
             clientInput.style.display = 'flex';
@@ -76,15 +81,31 @@ const BtnHandler = () => {
     }
 }
 
-const pushNewOrderOnServer = () => {
+const pushNewOrderOnServer = (fetchUrl) => {
     const orderForm = document.getElementById('add-order');
     const addOrderBtn = document.getElementById('add-order-btn');
-    addOrderBtn.addEventListener('click', (e) => {
+
+    orderForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const url = './service/addorder.php';
+        const url = fetchUrl;
         const formData = new FormData(orderForm);
-        fetch(url, {method: 'POST', body: formData});
+        await fetchPost(url, formData);
+        updateState('orders');
     })
+}
+
+
+
+const validator = () => {
+    const uName = document.getElementById('o-uname').value;
+    const uEmail = document.getElementById('o-uemail').value;
+    const id = document.getElementById('order-input-id').value;
+    if (!uName && !uEmail && !id) {
+        alert('не выбран пользователь!!!')
+        return false
+    } else {
+        return true
+    }
 }
 
 
